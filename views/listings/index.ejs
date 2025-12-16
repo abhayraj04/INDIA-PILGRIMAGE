@@ -1,0 +1,263 @@
+<style>
+     body {
+   font-family: 'Roboto', sans-serif;
+   margin:0; padding:0; 
+   background:#fdfdfd; 
+   background: linear-gradient(90deg,rgb(243, 241, 231),rgb(166, 165, 161));
+   color:#333; 
+  }
+
+header {
+  background: linear-gradient(90deg,gold ,rgb(159, 136, 2));
+  color:white; 
+  text-align:center; 
+  padding:20px 0; 
+}
+
+footer { 
+  text-align:center; 
+   background: linear-gradient(90deg,gold ,rgb(159, 136, 2));
+  color:white; 
+  padding:20px;
+ }
+
+ .abr{
+  background-color: rgb(232, 160, 17);
+      border-radius: 1em;
+margin-left: 12%;
+   margin-bottom: 4%;
+  height: 40px;
+  width: 100px;
+  text-decoration: none;
+ }
+ .abr1{
+  background-color: rgb(232, 160, 17);
+   border-radius: 1em;
+   height: 40px;
+  width: 100px;
+  margin-left: 4%;
+     margin-bottom: 4%;
+ }
+      .abr1 a{
+      text-decoration: none;
+     color: black;
+
+     }
+
+ 
+ .abr:hover {
+   background-color: #2804ad; 
+      transform: scale(0.9);  
+   }
+   .abr1:hover {
+   background-color: #2804ad; 
+      transform: scale(0.9);  
+   }
+ 
+
+ .home h2 { 
+  text-align:center; 
+  margin:30px 0; 
+  color:#004080; 
+}
+
+.region-links { 
+  display:flex; 
+  flex-wrap:wrap; 
+  justify-content:center; 
+  gap:30px; 
+  padding:20px; 
+}
+
+
+.region-card {
+  background:rgb(232, 152, 4);
+  color:white;
+  padding:50px 40px;
+  border-radius:15px;
+  font-size:20px;
+  text-decoration:none;
+  font-weight:bold;
+  text-align:center;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.region-card:hover {
+   background:#00aaff; 
+   transform:translateY(-10px); 
+  }
+
+ .card-container { 
+  display:flex; 
+  flex-wrap:wrap; 
+  gap:20px; 
+  justify-content:center; 
+  padding:20px; 
+}
+
+.card { 
+  background:white; 
+  width:250px; 
+  border-radius:15px; 
+  overflow:hidden; 
+  box-shadow:0 8px 20px rgba(0,0,0,0.15); 
+  cursor:pointer;
+   transition: transform 0.3s,
+  box-shadow 0.3s; }
+
+  .card1 { 
+    margin-left: 25%;
+    align-items: center;
+    justify-content: center;
+  background:white; 
+  width: 600px;
+   border-radius:15px; 
+  overflow:hidden; 
+  box-shadow:0 8px 20px rgba(0,0,0,0.15); 
+  cursor:pointer;
+   transition: transform 0.3s,
+  box-shadow 0.3s;
+    margin-top: 5%;
+ }
+  .card2 { 
+    margin-top: 5%;
+    margin-left: 15%;
+    align-items: center;
+    justify-content: center;
+  background:white; 
+  width: 900px;
+   border-radius:15px; 
+  overflow:hidden; 
+  box-shadow:0 8px 20px rgba(0,0,0,0.15); 
+  cursor:pointer;
+   transition: transform 0.3s,
+  box-shadow 0.3s; }
+.card img { 
+  width:100%; 
+  height:160px; 
+  object-fit:cover; }
+
+.card h3 { 
+  padding:10px; 
+  color:#004080; 
+}
+
+.card p { 
+  padding:0 10px 10px 10px; 
+  font-size:14px; 
+  color:#555; 
+}
+
+.card:hover { 
+  transform:translateY(-10px); 
+  box-shadow:0 15px 25px rgba(0,0,0,0.3); 
+}
+.card1:hover { 
+  transform:translateY(-10px); 
+  box-shadow:0 15px 25px rgba(0,0,0,0.3); 
+}
+.card2:hover { 
+  transform:translateY(-10px); 
+  box-shadow:0 15px 25px rgba(0,0,0,0.3); 
+}
+nav { 
+  padding:10px; 
+  text-align:center; 
+}
+
+nav a { 
+  text-decoration:none; 
+  color:#004080; 
+  font-weight:bold; 
+}
+
+ .lightbox { 
+  display:none; 
+  position:fixed;
+  z-index:999; 
+  padding-top:50px; 
+  left:0; top:0; 
+  width:100%; 
+  height:100%; 
+  overflow:auto; 
+  background:rgba(0,0,0,0.9);
+}
+
+.lightbox-img { 
+display:block; 
+margin:auto; 
+max-width:80%; 
+max-height:80%; 
+}
+
+.lightbox-caption { text-align:center; color:#fff; margin-top:10px; font-size:18px; }
+.lightbox .close { position:absolute; top:20px; right:35px; color:#fff; font-size:40px; cursor:pointer; transition:0.3s; }
+.lightbox .close:hover { color:#bbb; }
+
+ @media(max-width:768px){
+  .card-container {
+     flex-direction:column; 
+     align-items:center;
+     }
+
+
+  .region-links { 
+  flex-direction:column; 
+  align-items:center; 
+}
+  .region-card { 
+  width:80%; 
+  padding:40px 20px; 
+  font-size:18px; }
+}
+
+.h11 {
+    font-size: xxx-large;
+    margin-bottom: 20px;
+    font-family: Open Sans, sans-serif ;
+    font-weight: 500;
+    opacity: 0.85;
+    border-right: 5px solid;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 10s steps(39) infinite, cursor 1s step-end infinite 4s;
+}
+
+ @keyframes typing {
+    from { width: 0%; }
+    to { width: 95%; }
+}
+
+ @keyframes cursor {
+    0%, 100% { border-color: black; }
+    50% { border-color: transparent; }
+}
+</style>
+
+<% layout("layouts/boilerplate.ejs") %>
+<body>
+    <h3 class="lst">All Pilgrimage Places</h3>
+
+    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1">
+        <% for(let listing of allListings){ %>
+        <a href="/listings/<%= listing._id %>" class="listing-lk">
+           <div class="card col">
+                <img src="<%= listing.image %>" class="card-img-top" alt="listing_image" style="height: 12rem"><br>
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                   <b><p class="card-text">
+                     <%= listing.title %> <br><br>
+                     <%= listing.description %>
+                   </p></b>
+                </div>
+            </div>
+        </a>    
+     <% } %>
+    </div>
+    
+
+    <footer>
+  <p>&copy; 2025 India Pilgrimage Guide</p>
+</footer>
+</body>

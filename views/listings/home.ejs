@@ -1,0 +1,735 @@
+<% layout("layouts/boilerplate.ejs") %>
+<body> 
+<div class="sear">
+  <form class="d-flex" role="search" action="/search" method="GET" autocomplete="off">
+    <div style="position:relative;">
+      <input id="search-input" class="form-control me-2 src-inp" type="search" placeholder="Search Destination" name="query" required>
+      <ul id="suggestions" class="search-suggestions" aria-label="Search suggestions"></ul>
+      <button class="btn btn-src btn-primary serch" type="submit" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass"></i> Search
+      </button>
+    </div>
+  </form>
+</div>
+ <div class="flip-container" class="reveal">
+  
+   <div class="flip-card">
+    <div class="flip-inner">
+      <div class="flip-front">
+        <h1 style="text-align: center;">Embark on Your Sacred Journey</h1>
+  <h3 style="text-align: center;">Experience peace, guidance, and spiritual transformation at revered pilgrimage sites.</h3>
+ 
+        <img src="/photo/image_copy.png" alt="Front Image 1">
+      </div>
+      <div class="flip-back">
+        <h1 style="text-align: center;">Embark on Your Sacred Journey</h1>
+  <h3 style="text-align: center;">Experience peace, guidance, and spiritual transformation at revered pilgrimage sites.</h3>
+ 
+        <img src="/photo/image2.png" alt="Back Image 1">
+      </div>
+    </div>
+  </div>
+
+  <div class="floating-shape" style="top:10%; left:5%; animation-delay:0s;"></div>
+<div class="floating-shape" style="top:60%; left:85%; animation-delay:1s;"></div>
+<div class="floating-shape" style="top:80%; left:25%; animation-delay:2s;"></div>
+
+
+   <div class="flip-card">
+    <div class="flip-inner">
+      <div class="flip-front">
+        <img src="/photo/image.png" alt="Front Image 2">
+      </div>
+      <div class="flip-back">
+        <img src="/photo/image3.png" alt="Back Image 2">
+ 
+      </div>
+ 
+    </div>
+ 
+  </div>
+ 
+</div>
+
+<div class="card1" > 
+   <h3 style="margin: 2%;" >Pilgrimage is more than travel, it's a soul-stirring quest. It connects the physical journey with deep internal exploration. Whether you seek solace, a deeper connection to faith, or reflection in a sacred space, guides and resources are here to support every step.</h3>
+</div>
+ 
+
+      
+<main class="home" style=>
+  <h2>Explore Pilgrimage Places</h2>
+  <div class="region-links">
+    <a href="/listings" class="region-card">Pilgrimage Places</a>
+    <!-- <a href="/listings" class="region-card">South India</a> -->
+    <!-- <a href="/listings" class="region-card">East India</a>
+    <a href="/listings" class="region-card">West India</a>
+    <a href="/listings" class="region-card">Central India</a> -->
+  </div>
+</main>
+
+ <section id="about">
+  <h2>About</h2>
+  <p>India is a land of diverse faiths, cultures, and sacred journeys. This guide was created to bring together pilgrimage sites from every tradition — Hindu, Muslim, Jain, Christian, Buddhist, and Sikh — region by region. <br><br>
+
+ <b>Our mission is simple:</b> <br><br>
+
+🗺️ Accessibility – Make information about pilgrimage sites easy to find, beautifully organized, and practical for travelers. <br>
+
+<br>🤝 Inclusivity – Represent all major faiths with respect and completeness, showing India’s spiritual diversity. <br>
+
+<br>🎨 User‑centric design – Interactive search, lightbox details, and smooth navigation ensure a seamless experience. <br>
+
+<br>📂 Modularity – Each region has its own curated data, merged into a global search for convenience. <br>
+
+<br>Whether you’re planning a spiritual journey, exploring cultural heritage, or simply curious, this guide is designed to help you discover India’s sacred geography with clarity and respect.</p>
+  </section>
+
+ 
+ 
+ 
+ <section id="rituals">
+  <h2>Rituals & Events</h2>
+  <p>
+    India’s spiritual calendar is alive with vibrant rituals and festivals across faiths. 
+    Click on each card to flip and reveal more details.
+  </p>
+
+  <div class="rituals-grid">
+
+     <div class="ritual-card">
+      <div class="ritual-inner">
+        <div class="ritual-front">
+          <h3>🕉️ Hindu Festivals</h3>
+          <p>Kumbh Mela, Diwali, Navratri, Rath Yatra...</p>
+        </div>
+        <div class="ritual-back">
+          <p>
+            Millions gather for <strong>Kumbh Mela</strong>, 
+            <strong>Diwali</strong> lights up homes, 
+            <strong>Navratri</strong> celebrates Goddess Durga, 
+            and <strong>Rath Yatra</strong> honors Lord Jagannath.
+          </p>
+        </div>
+      </div>
+    </div>
+
+     <div class="ritual-card">
+      <div class="ritual-inner">
+        <div class="ritual-front">
+          <h3>🕌 Muslim Observances</h3>
+          <p>Eid-ul-Fitr, Eid-ul-Adha, Urs at Ajmer...</p>
+        </div>
+        <div class="ritual-back">
+          <p>
+            <strong>Eid-ul-Fitr</strong> marks the end of Ramadan, 
+            <strong>Eid-ul-Adha</strong> commemorates sacrifice, 
+            and <strong>Urs</strong> at Ajmer Sharif celebrates Khwaja Moinuddin Chishti with qawwalis and prayers.
+          </p>
+        </div>
+      </div>
+    </div>
+
+     <div class="ritual-card">
+      <div class="ritual-inner">
+        <div class="ritual-front">
+          <h3>✝️ Christian Celebrations</h3>
+          <p>Christmas, Easter, Feast of St. Francis Xavier...</p>
+        </div>
+        <div class="ritual-back">
+          <p>
+            <strong>Christmas</strong> brings midnight masses and carols, 
+            <strong>Easter</strong> celebrates resurrection, 
+            and Goa’s <strong>Feast of St. Francis Xavier</strong> draws thousands of pilgrims.
+          </p>
+        </div>
+      </div>
+    </div>
+
+     <div class="ritual-card">
+      <div class="ritual-inner">
+        <div class="ritual-front">
+          <h3>🛕 Sikh Events</h3>
+          <p>Gurpurab, Baisakhi, Langar...</p>
+        </div>
+        <div class="ritual-back">
+          <p>
+            <strong>Gurpurab</strong> honors Sikh Gurus with processions, 
+            <strong>Baisakhi</strong> marks harvest and Khalsa’s birth, 
+            and <strong>Langar</strong> serves free meals to all, symbolizing equality.
+          </p>
+        </div>
+      </div>
+    </div>
+
+     <div class="ritual-card">
+      <div class="ritual-inner">
+        <div class="ritual-front">
+          <h3>🕉️ Jain Rituals</h3>
+          <p>Paryushana, Mahavir Jayanti, fasting traditions...</p>
+        </div>
+        <div class="ritual-back">
+          <p>
+            <strong>Paryushana</strong> emphasizes meditation and forgiveness, 
+            <strong>Mahavir Jayanti</strong> celebrates Lord Mahavira’s birth, 
+            and fasting rituals highlight non-violence and discipline.
+          </p>
+        </div>
+      </div>
+    </div>
+
+     <div class="ritual-card">
+      <div class="ritual-inner">
+        <div class="ritual-front">
+          <h3>☸️ Buddhist Observances</h3>
+          <p>Buddha Purnima, meditation retreats, chanting...</p>
+        </div>
+        <div class="ritual-back">
+          <p>
+            <strong>Buddha Purnima</strong> commemorates Buddha’s birth, enlightenment, and death, 
+            while monasteries host meditation retreats and chanting ceremonies across Sarnath, Bodh Gaya, and Dharamshala.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    
+ <section id="gallery">
+  <h2>Gallery</h2>
+  <p>Browse images of temples, rituals, and sacred landscapes.</p>
+
+  <div class="gallery-slider" aria-label="Image gallery">
+    <button class="nav-btn prev" aria-label="Previous image">‹</button>
+
+    <div class="slides">
+       <img src="/photo/image4.png" alt="Temple view" class="slide active">
+      <img src="/photo/image5.png" alt="Festival celebration" class="slide">
+      <img src="/photo/image6.png" alt="Sacred river ghat" class="slide">
+      <img src="/photo/image7.png" alt="Pilgrims gathering" class="slide">
+      <img src="/photo/image8.png" alt="Mountain shrine" class="slide">
+      <img src="/photo/image9.png" alt="Peaceful monastery" class="slide">
+    </div>
+
+    <button class="nav-btn next" aria-label="Next image">›</button>
+
+    <div class="dots" aria-label="Slide indicators"></div>
+  </div>
+</section>
+
+ <section id="blog">
+  <h2>Blog & Articles</h2>
+  <p>Click on any blog to read the full article.</p>
+
+  <div class="blog-container">
+
+    <!-- Blog 1 -->
+    <div class="blog-card" onclick="openBlog(1)">
+      <h3>Complete Pilgrimage Guide to India (2025 Edition)</h3>
+      <p>A complete guide to India's sacred routes and pilgrimage circuits.</p>
+    </div>
+
+    <!-- Blog 2 -->
+    <div class="blog-card" onclick="openBlog(2)">
+      <h3>How to Plan a Pilgrimage Trip in India</h3>
+      <p>Learn how to choose destinations, book travel, and stay safe.</p>
+    </div>
+
+    <!-- Blog 3 -->
+    <div class="blog-card" onclick="openBlog(3)">
+      <h3>Top 10 Pilgrimage Destinations You Must Visit</h3>
+      <p>Explore India's most visited spiritual locations.</p>
+    </div>
+
+  </div>
+
+   <div id="blog-content" class="blog-content">
+    <button class="close-btn" onclick="closeBlog()">× Close</button>
+    <div id="blog-text"></div>
+  </div>
+</section>
+
+
+
+ 
+
+ <section id="contact" class="contact-section">
+  <h2>Contact</h2>
+
+   <p class="contact-intro">
+    We’d love to help you plan a meaningful journey. Reach out via email, phone, or the form below.
+  </p>
+
+   <div class="contact-grid">
+
+     <div class="contact-card" aria-label="Direct contact methods">
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <div class="contact-value">
+          <a href="mailto:info@indiapilgrimage.com" class="contact-link">info@indiapilgrimage.com</a>
+          <button class="copy-btn" data-copy="info@indiapilgrimage.com" aria-label="Copy email">
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-label">Phone</span>
+        <div class="contact-value">
+          <a href="tel:+919876543210" class="contact-link">+91-9876543210</a>
+          <button class="copy-btn" data-copy="+91-9876543210" aria-label="Copy phone">
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-label">Hours</span>
+        <div class="contact-value">Mon–Sat, 9:00 AM – 6:00 PM IST</div>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-label">Prefer WhatsApp?</span>
+        <div class="contact-value">
+          <label class="toggle">
+            <input type="checkbox" id="wa-toggle" />
+            <span class="slider"></span>
+          </label>
+          <a id="wa-link" class="contact-link" href="https://wa.me/919876543210?text=Namaste! I'd like help planning a pilgrimage."
+             target="_blank" rel="noopener">Open WhatsApp</a>
+        </div>
+      </div>
+      <div class="contact-map" aria-label="Location">
+      <div class="map-card" style="width: 400px;">
+        <h3>Our base</h3>
+        <p>Hajipur, Bihar</p>
+        <a class="map-link" target="_blank" rel="noopener"
+           href=" https://maps.app.goo.gl/1NhWGno6tJDYfJyB8">
+          View on Google Maps →
+        </a>
+      </div>
+    </div>
+    </div>
+
+     <form id="contact-form" class="contact-form" novalidate aria-label="Send us a message">
+      <div class="form-row">
+        <label for="name">Full name</label>
+        <input id="name" name="name" type="text" placeholder="e.g., Abc Kumar" required />
+        <small class="error" id="name-error"></small>
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        <small class="error" id="email-error"></small>
+      </div>
+
+      <div class="form-row">
+        <label for="topic">Topic</label>
+        <select id="topic" name="topic" required>
+          <option value="">Select a topic</option>
+          <option value="guide">Guide appointment</option>
+          <option value="prasad">Online Prasad booking</option>
+          <option value="itinerary">Itinerary planning</option>
+          <option value="other">Other</option>
+        </select>
+        <small class="error" id="topic-error"></small>
+      </div>
+
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Share details—dates, region, sites, preferences…" maxlength="800" required></textarea>
+        <div class="char-row">
+          <small><span id="char-count">0</span>/800</small>
+        </div>
+        <small class="error" id="message-error"></small>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Send message</button>
+        <button type="reset" class="btn-ghost">Clear</button>
+      </div>
+
+      <div id="form-toast" class="form-toast" role="status" aria-live="polite" hidden>
+        Message sent. We’ll get back to you soon.
+      </div>
+    </form>
+
+     
+  </div>
+</section>
+
+
+ <section id="faqs">
+  <h2>FAQs</h2>
+  <div class="faq-container">
+
+     <div class="faq-item">
+      <button class="faq-question">What is India Pilgrimage Guide?</button>
+      <div class="faq-answer">
+        <p>India Pilgrimage Guide is a multi-faith platform that helps travelers explore sacred sites across India, organized region-wise for clarity and inclusivity.</p>
+      </div>
+    </div>
+
+     <div class="faq-item">
+      <button class="faq-question">How do I book Prasad online?</button>
+      <div class="faq-answer">
+        <p>You can book Prasad through our <a href="#services">Services</a> section. Select your temple, choose the Prasad option, and complete the booking securely.</p>
+      </div>
+    </div>
+
+     <div class="faq-item">
+      <button class="faq-question">Can I appoint a guide for my pilgrimage?</button>
+      <div class="faq-answer">
+        <p>Yes, guide appointment is available through the <a href="login.html">User Login</a> section. Once logged in, you can request a guide for your chosen region.</p>
+      </div>
+    </div>
+
+     <div class="faq-item">
+      <button class="faq-question">Is the guide inclusive of all faiths?</button>
+      <div class="faq-answer">
+        <p>Absolutely. Our guide covers Hindu, Muslim, Jain, Christian, Buddhist, and Sikh pilgrimage sites, ensuring cultural sensitivity and inclusivity.</p>
+      </div>
+    </div>
+
+     <div class="faq-item">
+      <button class="faq-question">Do I need to create an account?</button>
+      <div class="faq-answer">
+        <p>You can browse freely without an account. However, booking services like Prasad or guide appointments require login for secure processing.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+ 
+
+<footer>
+  <p>&copy; 2025 India Pilgrimage Guide</p>
+</footer>
+
+  
+<script>
+  const faqs = document.querySelectorAll('.faq-question');
+  faqs.forEach(faq => {
+    faq.addEventListener('click', () => {
+      faq.parentElement.classList.toggle('active');
+    });
+  });
+
+   const cards = document.querySelectorAll(".ritual-card");
+
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      card.classList.toggle("flipped");
+    });
+  });
+  
+ function openBlog(id) {
+  const blogBox = document.getElementById("blog-content");
+  const blogText = document.getElementById("blog-text");
+
+  let content = "";
+
+  if (id === 1) {
+    content = `
+      <h2>Complete Pilgrimage Guide to India (2025 Edition)</h2>
+      <p>India is a land of timeless spirituality, sacred traditions, and temples.</p>
+
+      <h3>1. Why India is the Land of Pilgrimage</h3>
+      <p>India is home to Hinduism, Buddhism, Jainism, Sikhism, and many sacred sites.</p>
+
+      <h3>2. Top Pilgrimage Circuits</h3>
+      <ul>
+        <li>Char Dham Yatra — Yamunotri, Gangotri, Kedarnath, Badrinath</li>
+        <li>12 Jyotirlingas — Somnath, Mahakaleshwar, Rameshwaram, etc.</li>
+        <li>Buddhist Circuit — Bodh Gaya, Sarnath, Kushinagar...</li>
+      </ul>
+
+      <h3>3. What to Expect</h3>
+      <p>Cultural diversity, calm spiritual environment, and inner peace.</p>
+    `;
+  }
+
+  if (id === 2) {
+    content = `
+      <h2>How to Plan a Pilgrimage Trip in India</h2>
+
+      <h3>1. Choose Your Destination</h3>
+      <p>Pick mountains (Kedarnath), temples (Somnath), or rivers (Ganga ghats).</p>
+
+      <h3>2. Best Time to Visit</h3>
+      <p>October–March is ideal for most journeys.</p>
+
+      <h3>3. Travel & Stay</h3>
+      <p>Use IRCTC for railway bookings and find hotels near temples.</p>
+
+      <h3>4. Safety Tips</h3>
+      <ul>
+        <li>Carry warm clothes in mountains</li>
+        <li>Keep ID proof</li>
+        <li>Use official darshan passes</li>
+      </ul>
+    `;
+  }
+
+  if (id === 3) {
+    content = `
+      <h2>Top 10 Pilgrimage Destinations You Must Visit</h2>
+      <ol>
+        <li>Varanasi</li>
+        <li>Rameshwaram</li>
+        <li>Tirupati Balaji</li>
+        <li>Kedarnath</li>
+        <li>Amarnath</li>
+        <li>Golden Temple</li>
+        <li>Puri Jagannath</li>
+        <li>Vaishno Devi</li>
+        <li>Bodh Gaya</li>
+        <li>Dwarka</li>
+      </ol>
+    `;
+  }
+
+   blogText.innerHTML = content;
+
+   blogBox.classList.add("show");
+  blogBox.scrollIntoView({ behavior: "smooth" });
+}
+
+function closeBlog() {
+  const blogBox = document.getElementById("blog-content");
+
+   blogBox.classList.remove("show");
+  setTimeout(() => {
+    blogBox.style.display = "none";
+  }, 300);
+
+  window.scrollTo({ top: blogBox.offsetTop - 200, behavior: "smooth" });
+}
+ 
+ document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const text = btn.getAttribute('data-copy');
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied';
+      setTimeout(() => (btn.textContent = 'Copy'), 1200);
+    });
+  });
+});
+
+function debounce(fn, wait){ let t; return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn(...args), wait); }; }
+
+  (function(){
+    const input = document.getElementById('search-input');
+    const list  = document.getElementById('suggestions');
+
+    if (!input || !list) return;
+
+    function clearList(){ list.innerHTML = ''; list.style.display = 'none'; }
+
+    function render(items){
+      if (!items || items.length === 0){ clearList(); return; }
+      list.innerHTML = items.map(i => `<li class="suggest-item" role="option">${i}</li>`).join('');
+      list.style.display = 'block';
+    }
+
+    const fetchSuggestions = debounce(async function(){
+      const v = input.value.trim();
+      if (!v) { clearList(); return; }
+      try {
+        const res = await fetch('/suggest?q=' + encodeURIComponent(v));
+        if (!res.ok) { clearList(); return; }
+        const data = await res.json();
+        render(data);
+      } catch (e) { clearList(); }
+    }, 200);
+
+    input.addEventListener('input', fetchSuggestions);
+
+     list.addEventListener('click', function(e){
+      const it = e.target.closest('.suggest-item');
+      if (!it) return;
+      input.value = it.textContent;
+      clearList();
+     });
+
+     document.addEventListener('click', (e)=>{ if (!e.target.closest('#search-input') && !e.target.closest('#suggestions')) clearList(); });
+    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') clearList(); });
+
+  })();
+
+ const waToggle = document.getElementById('wa-toggle');
+const waLink = document.getElementById('wa-link');
+if (waToggle && waLink) {
+  waToggle.addEventListener('change', () => {
+    waLink.style.display = waToggle.checked ? 'inline-block' : 'none';
+  });
+   waLink.style.display = 'none';
+}
+
+ const form = document.getElementById('contact-form');
+const toast = document.getElementById('form-toast');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const topicSelect = document.getElementById('topic');
+const messageInput = document.getElementById('message');
+const charCount = document.getElementById('char-count');
+
+function setError(el, msg) {
+  const small = el.parentElement.querySelector('.error');
+  small.textContent = msg || '';
+}
+
+function isEmail(str) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str);
+}
+
+messageInput.addEventListener('input', () => {
+  charCount.textContent = messageInput.value.length;
+});
+
+[nameInput, emailInput, topicSelect, messageInput].forEach(el => {
+  el.addEventListener('input', () => setError(el, ''));
+});
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  let ok = true;
+
+  if (!nameInput.value.trim()) { setError(nameInput, 'Please enter your full name.'); ok = false; }
+  if (!emailInput.value.trim() || !isEmail(emailInput.value.trim())) { setError(emailInput, 'Enter a valid email.'); ok = false; }
+  if (!topicSelect.value) { setError(topicSelect, 'Please select a topic.'); ok = false; }
+  if (!messageInput.value.trim()) { setError(messageInput, 'Please share a brief message.'); ok = false; }
+
+  if (!ok) return;
+
+   toast.hidden = false;
+  form.reset();
+  charCount.textContent = '0';
+  setTimeout(() => { toast.hidden = true; }, 2500);
+
+ });
+
+const flipCards = document.querySelectorAll(".flip-card");
+
+flipCards.forEach(card => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
+  });
+});
+
+   
+ (function () {
+  const slider = document.querySelector('.gallery-slider');
+  if (!slider) return;
+
+  const slides = Array.from(slider.querySelectorAll('.slide'));
+  const prev = slider.querySelector('.prev');
+  const next = slider.querySelector('.next');
+  const dotsWrap = slider.querySelector('.dots');
+
+  let index = 0;
+  let timer = null;
+
+   slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  const dots = Array.from(dotsWrap.querySelectorAll('.dot'));
+
+  function setActive(i) {
+    slides.forEach((s, si) => s.classList.toggle('active', si === i));
+    dots.forEach((d, di) => d.classList.toggle('active', di === i));
+  }
+
+  function goTo(i) {
+    index = (i + slides.length) % slides.length;
+    setActive(index);
+    restartAuto();
+  }
+
+  function nextSlide() { goTo(index + 1); }
+  function prevSlide() { goTo(index - 1); }
+
+  prev.addEventListener('click', prevSlide);
+  next.addEventListener('click', nextSlide);
+
+   function startAuto() { timer = setInterval(nextSlide, 4000); }
+  function stopAuto() { clearInterval(timer); timer = null; }
+  function restartAuto() { stopAuto(); startAuto(); }
+
+   slider.addEventListener('mouseenter', stopAuto);
+  slider.addEventListener('mouseleave', startAuto);
+  slider.addEventListener('focusin', stopAuto);
+  slider.addEventListener('focusout', startAuto);
+
+   let startX = null;
+  slider.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; stopAuto(); }, { passive: true });
+  slider.addEventListener('touchend', (e) => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) {
+      dx < 0 ? nextSlide() : prevSlide();
+    }
+    startX = null;
+    startAuto();
+  });
+
+   setActive(index);
+  startAuto();
+})();
+
+ 
+const revealElements = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  const windowHeight = window.innerHeight;
+  revealElements.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < windowHeight - 100) {
+      el.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+
+ document.querySelectorAll("section").forEach(sec => {
+  const items = sec.querySelectorAll(".region-card, .ritual-card, .blog-card, .contact-card");
+  let delay = 0;
+  items.forEach(it => {
+    it.style.transitionDelay = delay + "s";
+    delay += 0.15;
+  });
+});
+
+
+ const observer = new MutationObserver(() => {
+  document.querySelectorAll(".slide").forEach(s => {
+    if (s.classList.contains("active")) {
+      s.style.opacity = "1";
+      s.style.transition = "opacity 0.8s ease";
+    } else {
+      s.style.opacity = "0";
+    }
+  });
+});
+
+observer.observe(document.querySelector(".slides"), { attributes: true, subtree: true });
+
+
+
+
+</script>
+
+</body>

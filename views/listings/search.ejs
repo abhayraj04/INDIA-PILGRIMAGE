@@ -1,0 +1,28 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container mt-4">
+  <h2>Search results for "<%= query %>"</h2>
+
+  <% if (results && results.length > 0) { %>
+    <div class="row">
+      <% results.forEach(listing => { %>
+        <div class="col-md-4 mb-3">
+            <div class="card offset-3 show-card">
+                 <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing_image">
+                 <div class="card-body">
+                   <p class="card-text">
+                     <b> <h3>Place Name : </h3><%= listing.title %></b><br><br>
+                     <b><h5>Description : </h5></b> <%= listing.description %> <br><br>
+                     <b><h5>Locatoin : </h5></b> <%= listing.location %> <br><br>
+                     <b><h5>visiting Time : </h5></b> <%= listing.visitingTime %> <br>
+                     <a href="/listings/<%= listing._id %>" class="btn btn-primary">View</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>No results found for "<%= query %>"</p>
+  <% } %>
+</div>
