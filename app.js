@@ -7,6 +7,7 @@ const app = express();
 const mongoose = require('mongoose');
 const Listing = require('./models/listing.js');
 const path = require("path");
+const fs = require("fs");
 const session = require('express-session');
 const ejsMate = require("ejs-mate");
 const passport = require("passport");
@@ -17,10 +18,20 @@ const userRouter = require("./routes/user.js");
 const budgetRoutes = require("./routes/budget.js");
 
 // Sample data fallback for when MongoDB is not connected
-const sampleData = require("./init/data.js").data;
+let sampleData = [];
+try {
+    sampleData = require("./init/data.js").data;
+} catch (e1) {
+    try {
+        sampleData = require("../init/data.js").data;
+    } catch (e2) {
+        console.warn("Could not load sample data:", e2.message);
+    }
+}
+
 const defaultFallbackImage = "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1000";
 
-const fallbackListings = sampleData.map((item, index) => {
+const fallbackListings = (sampleData || []).map((item, index) => {
     let img = item.image;
     if (!img || (!img.startsWith("http") && !img.startsWith("/"))) {
         img = defaultFallbackImage;
@@ -104,15 +115,32 @@ async function searchListings(query) {
     );
 }
 
-// View engine setup
+// Locate views directory (robust across local and Vercel environments)
+let viewsDir = path.join(__dirname, "views");
+if (!fs.existsSync(viewsDir)) {
+    viewsDir = path.join(process.cwd(), "views");
+}
+if (!fs.existsSync(viewsDir)) {
+    viewsDir = path.join(__dirname, "../views");
+}
+
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", viewsDir);
+
+// Locate public directory
+let publicDir = path.join(__dirname, "public");
+if (!fs.existsSync(publicDir)) {
+    publicDir = path.join(process.cwd(), "public");
+}
+if (!fs.existsSync(publicDir)) {
+    publicDir = path.join(__dirname, "../public");
+}
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(publicDir));
 
 const sessionOptions = {
     secret: process.env.SESSION_SECRET || process.env.SECRET || "mybadsecrets",
@@ -136,6 +164,16 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
     res.locals.currUser = req.user;
     next();
+});
+
+// Health check endpoint
+app.get("/api/health", (req, res) => {
+    res.json({
+        status: "ok",
+        viewsDir: viewsDir,
+        viewsExist: fs.existsSync(viewsDir),
+        dbReadyState: mongoose.connection.readyState
+    });
 });
 
 // Routes
@@ -192,12 +230,12 @@ app.get("/search", async (req, res, next) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error("Application Error:", err);
-    res.status(500).send("Something went wrong! Please check server logs.");
+    res.status(500).send(`Server Error: ${err.message || err}`);
 });
 
-// Start server if run directly
+// Start server if run directly (and not in Vercel serverless)
 const PORT = process.env.PORT || 8080;
-if (require.main === module) {
+if (require.main === module && !process.env.VERCEL) {
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });
