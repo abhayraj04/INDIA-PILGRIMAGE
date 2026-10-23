@@ -1119,4 +1119,41 @@ html, body {
 }
 
 
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+}
+
+.menu-toggle span{
+  width:26px;
+  height:3px;
+  background:white;
+}
+
+@media(max-width:768px){
+  .hero{
+    flex-direction:column-reverse;
+    text-align:center;
+  }
+  .nav-links{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:rgba(2,6,23,0.95);
+    flex-direction:column;
+    display:none;
+  }
+  .nav-links.show{
+    display:flex;
+  }
+  .nav-links li{
+    padding:15px 0;
+  }
+  .menu-toggle{
+    display:flex;
+  }
+}
+
  

@@ -16,7 +16,11 @@ const listingSchema = new Schema({
     visitingTime: String,
     railwayStation: String,
     nearbyAttractions: String,
-})
+    distance: {
+        type: Number,
+        default: 500
+    }
+});
 
 const Listing = mongoose.model("Listing", listingSchema);
 

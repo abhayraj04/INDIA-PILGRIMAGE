@@ -1,0 +1,97 @@
+ <% layout("layouts/boilerplate.ejs") %>
+
+<div class="container mt-4">
+  <h2 style="margin-top: 100px;">🧮 Pilgrimage Budget Planner</h2>
+
+  <form id="budgetForm">
+
+    <!-- Searchable dropdown -->
+    <label>Select Pilgrimage Place:</label>
+    <input type="text" id="placeSearch" placeholder="Search place..." class="form-control mb-2">
+
+    <select id="placeSelect" class="form-control mb-3">
+      <% listings.forEach(place => { %>
+        <option value="<%= place.distance %>">
+          <%= place.title %>
+        </option>
+      <% }) %>
+    </select>
+
+    <label>Number of Days:</label>
+    <input type="number" id="days" class="form-control mb-2" required>
+
+    <label>Travelers:</label>
+    <input type="number" id="travelers" class="form-control mb-2" required>
+
+    <label>Travel Mode:</label>
+    <select id="travelMode" class="form-control mb-2">
+      <option>Bus</option>
+      <option>Train</option>
+      <option>Flight</option>
+      <option>Car</option>
+    </select>
+
+    <label>Stay Type:</label>
+    <select id="stayType" class="form-control mb-2">
+      <option>Budget</option>
+      <option>Standard</option>
+      <option>Luxury</option>
+    </select>
+
+    <label>Food Type:</label>
+    <select id="foodType" class="form-control mb-3">
+      <option>Economy</option>
+      <option>Standard</option>
+      <option>Premium</option>
+    </select>
+
+    <button class="btn btn-success">Calculate Budget</button>
+  </form>
+
+  <div id="result" class="mt-4"></div>
+</div>
+<script>
+const searchInput = document.getElementById("placeSearch");
+const select = document.getElementById("placeSelect");
+
+searchInput.addEventListener("keyup", function () {
+  const filter = searchInput.value.toLowerCase();
+  Array.from(select.options).forEach(option => {
+    option.style.display =
+      option.text.toLowerCase().includes(filter) ? "" : "none";
+  });
+});
+</script>
+<script>
+document.getElementById("budgetForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const distance = Number(placeSelect.value);
+  const days = Number(days.value);
+  const travelers = Number(travelers.value);
+  const travelMode = travelMode.value;
+  const stayType = stayType.value;
+  const foodType = foodType.value;
+
+  let travelCost = 0;
+  if(travelMode==="Bus") travelCost = distance*2*travelers;
+  if(travelMode==="Train") travelCost = distance*1.5*travelers;
+  if(travelMode==="Flight") travelCost = 3000+distance*5;
+  if(travelMode==="Car") travelCost = (distance/15)*110;
+
+  const stay = {Budget:800, Standard:1500, Luxury:3000}[stayType]*days;
+  const food = {Economy:250, Standard:400, Premium:700}[foodType]*days*travelers;
+
+  const total = travelCost + stay + food;
+
+  result.innerHTML = `
+    <div class="alert alert-info">
+      <b>Travel:</b> ₹${travelCost}<br>
+      <b>Stay:</b> ₹${stay}<br>
+      <b>Food:</b> ₹${food}<br>
+      <hr>
+      <h4>Total Budget: ₹${total}</h4>
+    </div>
+  `;
+});
+</script>

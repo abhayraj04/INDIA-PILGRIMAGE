@@ -1,39 +1,134 @@
+ <% layout("layouts/boilerplate.ejs") %>
+
 <style>
-  a{
-    text-decoration: none;
-    color: white;
+  a { text-decoration: none; color: white; }
+
+  .show-img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .show-img:hover {
+    transform: scale(1.04);
+  }
+
+  
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    overflow-y: auto;
+    padding: 40px 0;
+  }
+
+  .lightbox-content {
+    background: #fff;
+    width: 70%;
+    margin: auto;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+  }
+
+  .lightbox-content img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
   }
 </style>
 
-<% layout("layouts/boilerplate.ejs") %>
-<body>
-    <div class="row mt-3 showls">
-      <div class="col-8 offset-3">
-      </div>
-     <div class="card col-6 offset-3 show-card">
-      <h3>Place Details : </h3>
-       <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing_image">
-       <div class="card-body">
-           <p class="card-text">
-              <b> <h3><%= listing.title %></h3></b><br>
-              <b><h5>Description : </h5></b> <%= listing.description %> <br><br>
-              <b><h5>Near Attractions : </h5></b> <%= listing.nearbyAttractions %> <br><br>
-              <b><h5>visiting Time : </h5></b> <%= listing.visitingTime %> <br><br>
-              <b><h5>Near Railway Station : </h5></b> <%= listing.railwayStation %> <br><br>
-              <button class="btn btn-danger"><a href="<%= listing.location %>">Get Direction</a> </button><br><br>
+<!-- ================= MAIN PAGE ================= -->
+<div class="row mt-3" style="margin-top: 50px;">
+  <div class="card col-6 offset-3 show-card" style="margin-top: 50px;">
+    <h3>Place Details :</h3>
 
-              <div class="btns">
-                <a href="#" class="btn btn-primary col-2 offset-3">About this place</a>
-                <form action="#">
-                  <button class="btn btn-success offset-5">Book for Guide</button>
-                </form>
-              </div> 
-           </p>
-        </div>
-      </div>
-     <br>
-   </div>
-   <footer>
+    <!-- IMAGE (OPENS LIGHTBOX) -->
+    <img
+      src="<%= listing.image %>"
+      class="card-img-top show-img"
+      id="openLightbox"
+      alt="listing_image"
+    >
+
+    <div class="card-body">
+      <h3><%= listing.title %></h3>
+
+      <p><b>Description:</b> <%= listing.description %></p>
+      <p><b>Near Attractions:</b> <%= listing.nearbyAttractions %></p>
+      <p><b>Visiting Time:</b> <%= listing.visitingTime %></p>
+      <p><b>Nearest Railway Station:</b> <%= listing.railwayStation %></p>
+
+      <!-- MAIN PAGE BUTTONS -->
+      <button class="btn btn-danger">
+        <a href="<%= listing.location %>" target="_blank">Get Direction</a>
+      </button>
+
+      <a href="#" class="btn btn-primary ms-2">About this place</a>
+
+      <button class="btn btn-success ms-2">Book for Guide</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= LIGHTBOX POPUP ================= -->
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-content">
+    <span class="close" id="closeLightbox">&times;</span>
+
+    <img src="<%= listing.image %>" alt="popup-image">
+
+    <h3><%= listing.title %></h3>
+
+    <p><b>Description:</b> <%= listing.description %></p>
+    <p><b>Near Attractions:</b> <%= listing.nearbyAttractions %></p>
+    <p><b>Visiting Time:</b> <%= listing.visitingTime %></p>
+    <p><b>Nearest Railway Station:</b> <%= listing.railwayStation %></p>
+
+    <hr>
+
+    <!-- POPUP BUTTONS (SAME AS MAIN PAGE) -->
+    <button class="btn btn-danger">
+      <a href="<%= listing.location %>" target="_blank">Get Direction</a>
+    </button>
+
+    <a href="#" class="btn btn-primary ms-2">About this place</a>
+
+    <button class="btn btn-success ms-2">Book for Guide</button>
+  </div>
+</div>
+
+<footer>
   <p>&copy; 2025 India Pilgrimage Guide</p>
-</footer>  
-</body>
+</footer>
+
+<!-- ================= JS ================= -->
+<script>
+  const openBtn = document.getElementById("openLightbox");
+  const closeBtn = document.getElementById("closeLightbox");
+  const lightbox = document.getElementById("lightbox");
+
+  openBtn.addEventListener("click", () => {
+    lightbox.style.display = "block";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = "none";
+    }
+  });
+</script>
