@@ -16,6 +16,7 @@ const User = require("./models/user.js");
 
 const userRouter = require("./routes/user.js");
 const budgetRoutes = require("./routes/budget.js");
+const aiRoutes = require("./routes/ai.js");
 
 // Sample data fallback for when MongoDB is not connected
 let sampleData = [];
@@ -179,6 +180,7 @@ app.get("/api/health", (req, res) => {
 // Routes
 app.use("/", userRouter);
 app.use("/budget", budgetRoutes);
+app.use("/", aiRoutes);
 
 // Home
 app.get("/", async (req, res, next) => {

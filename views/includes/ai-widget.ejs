@@ -1,0 +1,469 @@
+<!-- Floating AI Spiritual Guide Widget -->
+<div id="aiFloatingWidget" class="ai-widget-container">
+
+  <!-- Floating Trigger Button -->
+  <button id="aiWidgetToggle" class="ai-widget-btn" aria-label="Open AI Pilgrimage Assistant">
+    <span class="ai-widget-icon">✨</span>
+    <span class="ai-widget-label">AI Guide</span>
+    <span class="ai-widget-badge">LIVE</span>
+  </button>
+
+  <!-- Popup Chat Window -->
+  <div id="aiWidgetModal" class="ai-widget-modal">
+    <!-- Header -->
+    <div class="ai-widget-header">
+      <div class="ai-widget-title">
+        <span class="ai-widget-avatar">🪔</span>
+        <div>
+          <h4>Divya Yatra AI</h4>
+          <span class="ai-widget-subtitle">Spiritual Travel Companion</span>
+        </div>
+      </div>
+      <div class="ai-widget-actions">
+        <a href="/ai-guide" class="ai-widget-expand-btn" title="Open Fullscreen Planner">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0 0 .707l4.096 4.096V11.5a.5.5 0 0 1 1 0v4.5a.5.5 0 0 1-.5.5h-4.5a.5.5 0 0 1 0-1h3.475l-4.096-4.096a.5.5 0 0 1 .707-.707zM10.172 5.828a.5.5 0 0 0 0-.707L6.076 1.025V4.5a.5.5 0 0 1-1 0V0a.5.5 0 0 1 .5-.5h4.5a.5.5 0 0 1 0 1H6.601l4.096 4.096a.5.5 0 0 1-.707.707z"/>
+          </svg>
+        </a>
+        <button id="aiWidgetClose" class="ai-widget-close-btn" title="Close" aria-label="Close widget">&times;</button>
+      </div>
+    </div>
+
+    <!-- Quick Chips in Widget -->
+    <div class="ai-widget-chips">
+      <button type="button" class="ai-mini-chip" onclick="widgetQuickPrompt('Varanasi 2-day itinerary')">🕉️ Varanasi 2-Day</button>
+      <button type="button" class="ai-mini-chip" onclick="widgetQuickPrompt('Tirupati dress code and rules')">🛕 Tirupati Rules</button>
+      <button type="button" class="ai-mini-chip" onclick="widgetQuickPrompt('Kedarnath best time & trek info')">🏔️ Kedarnath</button>
+    </div>
+
+    <!-- Messages Container -->
+    <div id="aiWidgetMessages" class="ai-widget-messages">
+      <div class="ai-mini-msg ai-bot-mini">
+        <span class="ai-mini-avatar">🪔</span>
+        <div class="ai-mini-bubble">
+          <b>Namaste!</b> I am your AI Spiritual Guide. Ask me for custom travel plans, darshan timings, or dress codes for any holy shrine in India!
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Footer -->
+    <form id="aiWidgetForm" class="ai-widget-footer" onsubmit="handleWidgetSubmit(event)">
+      <input
+        type="text"
+        id="aiWidgetInput"
+        class="ai-widget-input"
+        placeholder="Ask about any temple or itinerary..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit" id="aiWidgetSend" class="ai-widget-send" aria-label="Send">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11z"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+  .ai-widget-container {
+    position: fixed;
+    bottom: 24px;
+    right: 70px; /* leaves room for the one-side animation strip */
+    z-index: 10000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* Trigger Button */
+  .ai-widget-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 11px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(217, 119, 6, 0.45);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ai-widget-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(217, 119, 6, 0.55);
+    background: linear-gradient(135deg, #fbbf24 0%, #b45309 100%);
+  }
+
+  .ai-widget-icon {
+    font-size: 1.15rem;
+    animation: sparkleSpin 3s infinite ease-in-out;
+  }
+
+  @keyframes sparkleSpin {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(20deg) scale(1.15); }
+  }
+
+  .ai-widget-badge {
+    background: #166534;
+    color: #86efac;
+    font-size: 0.68rem;
+    padding: 2px 7px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+  }
+
+  /* Modal Chat */
+  .ai-widget-modal {
+    display: none;
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 370px;
+    max-width: calc(100vw - 30px);
+    height: 520px;
+    max-height: calc(100vh - 120px);
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(217, 119, 6, 0.25);
+    overflow: hidden;
+    flex-direction: column;
+    animation: slideUpWidget 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ai-widget-modal.active {
+    display: flex;
+  }
+
+  @keyframes slideUpWidget {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .ai-widget-header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #ffffff;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ai-widget-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ai-widget-avatar {
+    font-size: 1.35rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px;
+    border-radius: 50%;
+  }
+
+  .ai-widget-title h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fef08a;
+  }
+
+  .ai-widget-subtitle {
+    font-size: 0.72rem;
+    color: #94a3b8;
+  }
+
+  .ai-widget-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ai-widget-expand-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+  .ai-widget-expand-btn:hover { color: #f59e0b; }
+
+  .ai-widget-close-btn {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .ai-widget-close-btn:hover { color: #ffffff; }
+
+  /* Chips */
+  .ai-widget-chips {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 8px 12px;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .ai-mini-chip {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    color: #475569;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .ai-mini-chip:hover {
+    background: #fffbeb;
+    border-color: #f59e0b;
+    color: #b45309;
+  }
+
+  /* Messages */
+  .ai-widget-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #fafaf9;
+    font-size: 0.86rem;
+    scroll-behavior: smooth;
+  }
+
+  .ai-mini-msg {
+    display: flex;
+    gap: 8px;
+    max-width: 90%;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .ai-bot-mini { align-self: flex-start; }
+  .ai-user-mini { align-self: flex-end; flex-direction: row-reverse; }
+
+  .ai-mini-avatar {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .ai-mini-bubble {
+    padding: 10px 13px;
+    border-radius: 14px;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  .ai-bot-mini .ai-mini-bubble {
+    background: #ffffff;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    border-bottom-left-radius: 3px;
+  }
+
+  .ai-user-mini .ai-mini-bubble {
+    background: #2563eb;
+    color: #ffffff;
+    border-bottom-right-radius: 3px;
+  }
+
+  .ai-mini-bubble h3, .ai-mini-bubble h4 {
+    font-size: 0.95rem;
+    color: #b45309;
+    margin: 4px 0;
+  }
+
+  .ai-mini-bubble ul {
+    margin: 4px 0;
+    padding-left: 18px;
+  }
+
+  /* Footer */
+  .ai-widget-footer {
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .ai-widget-input {
+    flex: 1;
+    border: 1px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 8px 14px;
+    font-size: 0.86rem;
+    outline: none;
+  }
+  .ai-widget-input:focus {
+    border-color: #f59e0b;
+  }
+
+  .ai-widget-send {
+    background: #f59e0b;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .ai-widget-send:hover { background: #d97706; }
+
+  @media (max-width: 768px) {
+    .ai-widget-container {
+      bottom: 16px;
+      right: 16px;
+    }
+    .ai-widget-btn .ai-widget-label {
+      display: none;
+    }
+    .ai-widget-modal {
+      width: calc(100vw - 32px);
+      height: 460px;
+    }
+  }
+</style>
+
+<script>
+(function() {
+  const toggleBtn = document.getElementById("aiWidgetToggle");
+  const modal = document.getElementById("aiWidgetModal");
+  const closeBtn = document.getElementById("aiWidgetClose");
+  const widgetMessages = document.getElementById("aiWidgetMessages");
+  const widgetInput = document.getElementById("aiWidgetInput");
+  const widgetSend = document.getElementById("aiWidgetSend");
+
+  const widgetHistory = [];
+
+  function formatMiniMarkdown(text) {
+    if (!text) return "";
+    let html = text
+      .replace(/^### (.*$)/gim, '<h4>$1</h4>')
+      .replace(/^## (.*$)/gim, '<h4>$1</h4>')
+      .replace(/^# (.*$)/gim, '<h4>$1</h4>')
+      .replace(/\*\*(.*?)\*\*/gim, '<b>$1</b>')
+      .replace(/\*(.*?)\*/gim, '<i>$1</i>')
+      .replace(/^\s*-\s+(.*$)/gim, '<li>$1</li>')
+      .replace(/\n\n/g, '<br>')
+      .replace(/\n/g, '<br>');
+
+    if (html.includes('<li>')) {
+      html = html.replace(/(<li>.*?<\/li>)/gis, '<ul>$1</ul>');
+      html = html.replace(/<\/ul><br><ul>/g, '');
+    }
+    return html;
+  }
+
+  function appendWidgetMsg(role, text) {
+    const isUser = role === "user";
+    const msg = document.createElement("div");
+    msg.className = `ai-mini-msg ${isUser ? "ai-user-mini" : "ai-bot-mini"}`;
+
+    const avatar = document.createElement("span");
+    avatar.className = "ai-mini-avatar";
+    avatar.innerHTML = isUser ? '👤' : '🪔';
+
+    const bubble = document.createElement("div");
+    bubble.className = "ai-mini-bubble";
+    if (isUser) {
+      bubble.textContent = text;
+    } else {
+      bubble.innerHTML = formatMiniMarkdown(text);
+    }
+
+    msg.appendChild(avatar);
+    msg.appendChild(bubble);
+    widgetMessages.appendChild(msg);
+    widgetMessages.scrollTop = widgetMessages.scrollHeight;
+  }
+
+  async function sendWidgetMsg(text) {
+    if (!text || !text.trim()) return;
+
+    appendWidgetMsg("user", text);
+    widgetHistory.push({ role: "user", content: text });
+    widgetInput.value = "";
+    widgetSend.disabled = true;
+
+    // Show temporary typing status
+    const loadingDiv = document.createElement("div");
+    loadingDiv.id = "widgetLoading";
+    loadingDiv.className = "ai-mini-msg ai-bot-mini";
+    loadingDiv.innerHTML = `<span class="ai-mini-avatar">🪔</span><div class="ai-mini-bubble"><i>Consulting pilgrimage wisdom...</i></div>`;
+    widgetMessages.appendChild(loadingDiv);
+    widgetMessages.scrollTop = widgetMessages.scrollHeight;
+
+    try {
+      const res = await fetch("/api/ai-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: text,
+          history: widgetHistory
+        })
+      });
+
+      const loading = document.getElementById("widgetLoading");
+      if (loading) loading.remove();
+
+      if (!res.ok) throw new Error("Failed response");
+      const data = await res.json();
+      const reply = data?.reply || "I am reflecting on your request. Please ask again.";
+      appendWidgetMsg("assistant", reply);
+      widgetHistory.push({ role: "assistant", content: reply });
+    } catch (e) {
+      const loading = document.getElementById("widgetLoading");
+      if (loading) loading.remove();
+      appendWidgetMsg("assistant", "⚠️ Connection error. Please try again.");
+    } finally {
+      widgetSend.disabled = false;
+    }
+  }
+
+  window.handleWidgetSubmit = function(e) {
+    e.preventDefault();
+    const val = widgetInput.value.trim();
+    if (val) sendWidgetMsg(val);
+  };
+
+  window.widgetQuickPrompt = function(promptText) {
+    if (!modal.classList.contains("active")) {
+      modal.classList.add("active");
+    }
+    sendWidgetMsg(promptText);
+  };
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      modal.classList.toggle("active");
+      if (modal.classList.contains("active")) {
+        widgetInput.focus();
+      }
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+  }
+})();
+</script>
