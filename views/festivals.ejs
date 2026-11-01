@@ -1,0 +1,375 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+  .festivals-page-container {
+    max-width: 1240px;
+    margin: 40px auto 80px auto;
+    padding: 0 15px;
+    padding-top: 50px;
+  }
+
+  .festivals-hero {
+    background: linear-gradient(135deg, #1e1b4b 0%, #2e1065 50%, #581c87 100%);
+    border-radius: 24px;
+    padding: 40px 30px;
+    color: #ffffff;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    margin-bottom: 35px;
+  }
+
+  .festivals-hero h1 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #fde047, #facc15, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+
+  .festivals-hero p {
+    color: #e2e8f0;
+    font-size: 1.05rem;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Filter Row */
+  .faith-filter-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .faith-tab-btn {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  }
+
+  .faith-tab-btn:hover {
+    background: #fff8eb;
+    border-color: #f59e0b;
+    color: #b45309;
+    transform: translateY(-2px);
+  }
+
+  .faith-tab-btn.active {
+    background: #f59e0b;
+    border-color: #d97706;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+  }
+
+  /* Grid */
+  .festivals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+  }
+
+  .festival-card {
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    padding: 24px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+  }
+
+  .festival-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+    border-color: #fcd34d;
+  }
+
+  .festival-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .festival-card-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+  }
+
+  .festival-time-tag {
+    color: #d97706;
+    font-size: 0.84rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .festival-desc {
+    font-size: 0.92rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex: 1;
+  }
+
+  .festival-epicenter {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 0.84rem;
+    color: #1e293b;
+    margin-bottom: 16px;
+  }
+
+  .festival-epicenter b {
+    color: #92400e;
+  }
+
+  .btn-plan-fest {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s;
+  }
+
+  .btn-plan-fest:hover {
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #ffffff;
+  }
+</style>
+
+<div class="container festivals-page-container">
+
+  <!-- Hero Header -->
+  <div class="festivals-hero">
+    <div style="font-size: 2.2rem; margin-bottom: 10px;">🛕 • ☬ • ☪️ • ☸️ • 🌸 • ✝️</div>
+    <h1>Sacred Festivals & Holy Calendar of Bharat</h1>
+    <p>Explore the spiritual calendar of India honoring all divine traditions: sacred bathing fairs, illuminated night vigils, Gurpurabs, Urs festivities, and holy masses.</p>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="faith-filter-bar">
+    <button class="faith-tab-btn active" onclick="filterFestivals('all', this)">🕊️ All Traditions</button>
+    <button class="faith-tab-btn" onclick="filterFestivals('Hinduism', this)">🛕 Hinduism</button>
+    <button class="faith-tab-btn" onclick="filterFestivals('Sikhism', this)">☬ Sikhism</button>
+    <button class="faith-tab-btn" onclick="filterFestivals('Islam & Sufism', this)">☪️ Islam & Sufism</button>
+    <button class="faith-tab-btn" onclick="filterFestivals('Buddhism', this)">☸️ Buddhism</button>
+    <button class="faith-tab-btn" onclick="filterFestivals('Jainism', this)">🌸 Jainism</button>
+    <button class="faith-tab-btn" onclick="filterFestivals('Christianity', this)">✝️ Christianity</button>
+  </div>
+
+  <!-- Festivals Grid -->
+  <div class="festivals-grid" id="festivalsGrid">
+
+    <!-- 1. Maha Shivaratri -->
+    <div class="festival-card" data-faith="Hinduism">
+      <div class="festival-card-header">
+        <h3>Maha Shivaratri</h3>
+        <span class="faith-badge faith-hinduism">🛕 Hinduism</span>
+      </div>
+      <div class="festival-time-tag">
+        <i class="bi bi-calendar3"></i> February / March (Phalguna Chaturdashi)
+      </div>
+      <p class="festival-desc">
+        The great night of Lord Shiva celebrating the cosmic dance (*Tandava*) and divine wedding of Shiva and Parvati. Devotees observe night-long fasts and Rudrabhishek.
+      </p>
+      <div class="festival-epicenter">
+        <b>Major Epicenters:</b> Varanasi (Kashi Vishwanath), Ujjain (Mahakaleshwar), Haridwar, Isha Yoga Coimbatore.
+      </div>
+      <a href="/ai-guide?prompt=<%= encodeURIComponent('Plan a Maha Shivaratri pilgrimage itinerary to Varanasi or Ujjain with darshan rules') %>" class="btn-plan-fest">
+        <i class="bi bi-stars"></i> Plan Festival Trip with AI
+      </a>
+    </div>
+
+    <!-- 2. Gurpurab Guru Nanak Jayanti -->
+    <div class="festival-card" data-faith="Sikhism">
+      <div class="festival-card-header">
+        <h3>Guru Nanak Gurpurab</h3>
+        <span class="faith-badge faith-sikhism">☬ Sikhism</span>
+      </div>
+      <div class="festival-time-tag">
+        <i class="bi bi-calendar3"></i> November (Karthik Purnima)
+      </div>
+      <p class="festival-desc">
+        Commemorating the birth of Guru Nanak Dev Ji, founder of Sikhism. Marked by 48-hour continuous Akhand Path recitation, Prabhat Pheris, Nagar Kirtan, and grand community Langars.
+      </p>
+      <div class="festival-epicenter">
+        <b>Major Epicenters:</b> Sri Harmandir Sahib (Amritsar), Gurdwara Nankana Sahib, Gurdwara Bangla Sahib Delhi.
+      </div>
+      <a href="/ai-guide?prompt=<%= encodeURIComponent('Plan a Gurpurab visit to the Golden Temple Amritsar including langar seva and timings') %>" class="btn-plan-fest">
+        <i class="bi bi-stars"></i> Plan Festival Trip with AI
+      </a>
+    </div>
+
+    <!-- 3. Urs of Khwaja Moinuddin Chishti -->
+    <div class="festival-card" data-faith="Islam & Sufism">
+      <div class="festival-card-header">
+        <h3>Urs of Khwaja Garib Nawaz</h3>
+        <span class="faith-badge faith-islam">☪️ Islam & Sufism</span>
+      </div>
+      <div class="festival-time-tag">
+        <i class="bi bi-calendar3"></i> Rajab (Islamic Lunar Calendar)
+      </div>
+      <p class="festival-desc">
+        The world-famous annual Sufi gathering commemorating the union of Sufi Saint Khwaja Moinuddin Chishti with the Divine. The Jannati Darwaza opens, and soulful Qawwalis echo into the night.
+      </p>
+      <div class="festival-epicenter">
+        <b>Major Epicenters:</b> Ajmer Sharif Dargah (Rajasthan), Nizamuddin Dargah (Delhi), Haji Ali (Mumbai).
+      </div>
+      <a href="/ai-guide?prompt=<%= encodeURIComponent('Guide me for attending the Urs at Ajmer Sharif Dargah, chadar rituals and qawwali timings') %>" class="btn-plan-fest">
+        <i class="bi bi-stars"></i> Plan Festival Trip with AI
+      </a>
+    </div>
+
+    <!-- 4. Buddha Purnima -->
+    <div class="festival-card" data-faith="Buddhism">
+      <div class="festival-card-header">
+        <h3>Buddha Purnima (Vesak)</h3>
+        <span class="faith-badge faith-buddhism">☸️ Buddhism</span>
+      </div>
+      <div class="festival-time-tag">
+        <i class="bi bi-calendar3"></i> April / May (Vaisakha Purnima)
+      </div>
+      <p class="festival-desc">
+        Triply blessed day marking the Birth, Supreme Enlightenment (Bodhi), and Mahaparinirvana of Gautama Buddha. Pilgrims dress in white, meditate under the sacred Bodhi tree, and light butter lamps.
+      </p>
+      <div class="festival-epicenter">
+        <b>Major Epicenters:</b> Mahabodhi Temple (Bodh Gaya), Sarnath (Varanasi), Kushinagar, Dharamshala.
+      </div>
+      <a href="/ai-guide?prompt=<%= encodeURIComponent('Plan a Buddha Purnima meditation journey to Bodh Gaya and Sarnath') %>" class="btn-plan-fest">
+        <i class="bi bi-stars"></i> Plan Festival Trip with AI
+      </a>
+    </div>
+
+    <!-- 5. Mahavir Jayanti -->
+    <div class="festival-card" data-faith="Jainism">
+      <div class="festival-card-header">
+        <h3>Mahavir Janma Kalyanak</h3>
+        <span class="faith-badge faith-jainism">🌸 Jainism</span>
+      </div>
+      <div class="festival-time-tag">
+        <i class="bi bi-calendar3"></i> March / April (Chaitra Shukla Trayodashi)
+      </div>
+      <p class="festival-desc">
+        The auspicious birthday of Bhagwan Mahavira, the 24th Tirthankara who propagated Ahimsa (non-violence) and Truth. Marked by ceremonial abhishek of Tirthankara idols and peaceful rath yatras.
+      </p>
+      <div class="festival-epicenter">
+        <b>Major Epicenters:</b> Palitana (Gujarat), Dilwara (Mount Abu), Shravanabelagola (Karnataka), Kundalpur.
+      </div>
+      <a href="/ai-guide?prompt=<%= encodeURIComponent('Guide me for a pilgrimage to Palitana or Dilwara temples during Mahavir Jayanti') %>" class="btn-plan-fest">
+        <i class="bi bi-stars"></i> Plan Festival Trip with AI
+      </a>
+    </div>
+
+    <!-- 6. Feast of Our Lady of Good Health -->
+    <div class="festival-card" data-faith="Christianity">
+      <div class="festival-card-header">
+        <h3>Feast of Our Lady of Velankanni</h3>
+        <span class="faith-badge faith-christianity">✝️ Christianity</span>
+      </div>
+      <div class="festival-time-tag">
+        <i class="bi bi-calendar3"></i> August 29 – September 8
+      </div>
+      <p class="festival-desc">
+        Revered as the "Lourdes of the East," this annual grand feast draws millions of pilgrims across faiths seeking healing and blessing, celebrated with grand car processions and multi-lingual masses.
+      </p>
+      <div class="festival-epicenter">
+        <b>Major Epicenters:</b> Basilica of Our Lady of Good Health (Velankanni, Tamil Nadu), Basilica of Bom Jesus (Goa).
+      </div>
+      <a href="/ai-guide?prompt=<%= encodeURIComponent('Plan a pilgrimage trip to Velankanni Basilica for the annual feast and prayers') %>" class="btn-plan-fest">
+        <i class="bi bi-stars"></i> Plan Festival Trip with AI
+      </a>
+    </div>
+
+    <!-- 7. Kumbh Mela -->
+    <div class="festival-card" data-faith="Hinduism">
+      <div class="festival-card-header">
+        <h3>Maha Kumbh & Magh Mela</h3>
+        <span class="faith-badge faith-hinduism">🛕 Hinduism</span>
+      </div>
+      <div class="festival-time-tag">
+        <i class="bi bi-calendar3"></i> Magh / Paush (Rotating Cycle every 3, 6 & 12 years)
+      </div>
+      <p class="festival-desc">
+        The largest peaceful spiritual gathering on earth, where millions take holy dips at sacred river confluences believed to grant liberation (*Moksha*).
+      </p>
+      <div class="festival-epicenter">
+        <b>Major Epicenters:</b> Prayagraj Triveni Sangam, Haridwar Ganga, Ujjain Shipra, Nashik Godavari.
+      </div>
+      <a href="/ai-guide?prompt=<%= encodeURIComponent('Guide me on attending Kumbh Mela snan dates, tent booking and transport') %>" class="btn-plan-fest">
+        <i class="bi bi-stars"></i> Plan Festival Trip with AI
+      </a>
+    </div>
+
+    <!-- 8. Baisakhi / Khalsa Sajna Divas -->
+    <div class="festival-card" data-faith="Sikhism">
+      <div class="festival-card-header">
+        <h3>Baisakhi (Khalsa Creation)</h3>
+        <span class="faith-badge faith-sikhism">☬ Sikhism</span>
+      </div>
+      <div class="festival-time-tag">
+        <i class="bi bi-calendar3"></i> April 13 / 14
+      </div>
+      <p class="festival-desc">
+        Celebrating the founding of the Khalsa Panth in 1699 by Guru Gobind Singh Ji at Anandpur Sahib. Marked by holy amrit sanchar, gatka martial arts, and joyous hymns.
+      </p>
+      <div class="festival-epicenter">
+        <b>Major Epicenters:</b> Takht Sri Kesgarh Sahib (Anandpur Sahib), Golden Temple (Amritsar), Damdama Sahib.
+      </div>
+      <a href="/ai-guide?prompt=<%= encodeURIComponent('Plan a Baisakhi spiritual tour to Anandpur Sahib and Amritsar') %>" class="btn-plan-fest">
+        <i class="bi bi-stars"></i> Plan Festival Trip with AI
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  function filterFestivals(faith, btn) {
+    document.querySelectorAll(".faith-tab-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const cards = document.querySelectorAll(".festival-card");
+    cards.forEach(card => {
+      const cardFaith = card.getAttribute("data-faith");
+      if (faith === "all" || cardFaith === faith) {
+        card.style.display = "flex";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+</script>

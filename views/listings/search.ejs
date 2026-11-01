@@ -156,6 +156,11 @@
               class="search-thumb-img"
               onerror="this.src='https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1000'"
             />
+            <% if (listing.faith) { %>
+              <span class="faith-badge faith-<%= (listing.faith || '').toLowerCase().replace(/[^a-z]/g, '') %>" style="position: absolute; top: 10px; left: 10px; font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; font-weight: 700;">
+                <%= listing.faithIcon || '🕊️' %> <%= listing.faith %>
+              </span>
+            <% } %>
           </div>
 
           <div class="search-body">

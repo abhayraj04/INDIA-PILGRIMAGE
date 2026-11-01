@@ -1,0 +1,350 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+  .etiquette-page-container {
+    max-width: 1120px;
+    margin: 40px auto 80px auto;
+    padding: 0 15px;
+    padding-top: 50px;
+  }
+
+  .etiquette-hero {
+    background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+    border-radius: 24px;
+    padding: 40px 30px;
+    color: #ffffff;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    margin-bottom: 35px;
+  }
+
+  .etiquette-hero h1 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #fef08a;
+    margin-bottom: 12px;
+  }
+
+  .etiquette-hero p {
+    color: #ecfdf5;
+    font-size: 1.05rem;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .faith-card-etiquette {
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    padding: 28px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    margin-bottom: 25px;
+    transition: all 0.25s ease;
+  }
+
+  .faith-card-etiquette:hover {
+    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  }
+
+  .faith-header-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1.5px solid #f1f5f9;
+    padding-bottom: 12px;
+  }
+
+  .faith-header-icon {
+    font-size: 2rem;
+  }
+
+  .faith-header-row h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .rule-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .rule-icon {
+    color: #16a34a;
+    font-size: 1.15rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .rule-text {
+    font-size: 0.92rem;
+    color: #334155;
+    line-height: 1.6;
+  }
+
+  .rule-text b {
+    color: #0f172a;
+    display: block;
+    margin-bottom: 2px;
+  }
+</style>
+
+<div class="container etiquette-page-container">
+
+  <!-- Header -->
+  <div class="etiquette-hero">
+    <div style="font-size: 2rem; margin-bottom: 8px;">🕊️ • 🛕 • ☬ • ☪️ • ☸️ • 🌸 • ✝️</div>
+    <h1>Universal Sacred Etiquette & Respect Guide</h1>
+    <p>India is a sacred sanctuary of diverse faiths. This guide helps pilgrims and travelers honor the unique customs, traditions, and sanctity of every holy shrine.</p>
+  </div>
+
+  <!-- 1. Hindu Temples -->
+  <div class="faith-card-etiquette">
+    <div class="faith-header-row">
+      <span class="faith-header-icon">🛕</span>
+      <div>
+        <h3>Hindu Temples (मंदिर एवं धाम)</h3>
+        <span class="faith-badge faith-hinduism">Sanatana Dharma</span>
+      </div>
+    </div>
+    <div class="rules-grid">
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Modest & Traditional Clothing:</b>
+          Wear clean, modest attire covering shoulders and knees. In South Indian temples (Tirupati, Guruvayur), men wear Dhotis and women wear Sarees.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Footwear & Cleanliness:</b>
+          Deposit all footwear at temple stands outside. Wash feet before entering the temple compound.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Clockwise Parikrama:</b>
+          Always circumambulate the sanctum sanctorum in a clockwise direction (*Pradakshina*).
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Receiving Prasad:</b>
+          Receive holy Charan-amrit and Prasad with your right hand, cup both hands respectfully.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Sikh Gurdwaras -->
+  <div class="faith-card-etiquette">
+    <div class="faith-header-row">
+      <span class="faith-header-icon">☬</span>
+      <div>
+        <h3>Sikh Gurdwaras (गुरुद्वारा साहिब)</h3>
+        <span class="faith-badge faith-sikhism">Sikhism</span>
+      </div>
+    </div>
+    <div class="rules-grid">
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Head Covering is Mandatory:</b>
+          Both men and women must cover their heads with a scarf, rumal, or turban before stepping into the Gurdwara grounds.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Joda Ghar & Foot Washing:</b>
+          Deposit shoes and socks in the Joda Ghar and gently wash your feet in the entry water channel.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Strict Prohibitions:</b>
+          Alcohol, tobacco, and non-vegetarian substances are strictly forbidden inside or near the Gurdwara.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Guru Ka Langar Equality:</b>
+          Everyone sits together on the floor in *Pangat* (rows) to eat wholesome Langar as equals. Take only what you will eat with reverence.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Islamic Mosques & Sufi Dargahs -->
+  <div class="faith-card-etiquette">
+    <div class="faith-header-row">
+      <span class="faith-header-icon">☪️</span>
+      <div>
+        <h3>Mosques & Sufi Dargahs (मस्जिद एवं दरगाह)</h3>
+        <span class="faith-badge faith-islam">Islam & Sufism</span>
+      </div>
+    </div>
+    <div class="rules-grid">
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Modesty & Head Cover:</b>
+          Modest attire covering legs and arms. Wearing a cap or covering head with a dupatta or scarf is customary, especially in Dargahs.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Wudu (Ablution):</b>
+          Performing ritual washing of hands, face, and feet at the *Hauz* pool prior to joining prayers is traditional.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Silence during Namaz:</b>
+          Maintain deep silence during congregational prayer hours (Farz Namaz) and avoid walking in front of praying devotees.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Chadar & Flowers in Dargahs:</b>
+          Offerings of fragrant rose petals and green embroidered silk Chadars are presented with peace and reverence.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Buddhist Monasteries -->
+  <div class="faith-card-etiquette">
+    <div class="faith-header-row">
+      <span class="faith-header-icon">☸️</span>
+      <div>
+        <h3>Buddhist Temples & Monasteries (बौद्ध महाविहार एवं स्तूप)</h3>
+        <span class="faith-badge faith-buddhism">Buddhism</span>
+      </div>
+    </div>
+    <div class="rules-grid">
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Clockwise Kora:</b>
+          Walk around Stupas (like Dhamek or Mahabodhi) in a clockwise direction. Turn prayer wheels clockwise with gentle care.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Sitting Etiquette:</b>
+          When seated in front of Buddha statues or monks, do not point your feet towards the sacred altar. Tuck your feet under or sit cross-legged.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Meditation Reverence:</b>
+          Keep phones on silent. Speak in whispers to allow monks and seekers uninterrupted mindfulness.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Respecting Holy Relics:</b>
+          Do not climb on ancient stupas or touch sacred murals.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Jain Tirthas -->
+  <div class="faith-card-etiquette">
+    <div class="faith-header-row">
+      <span class="faith-header-icon">🌸</span>
+      <div>
+        <h3>Jain Tirthas & Temples (जैन तीर्थ एवं जिनालय)</h3>
+        <span class="faith-badge faith-jainism">Jainism</span>
+      </div>
+    </div>
+    <div class="rules-grid">
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Strictly No Leather Items:</b>
+          Leather belts, wallets, shoes, and watch straps are strictly barred from all Jain temple premises to uphold complete *Ahimsa*.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Puja Clothes:</b>
+          For performing Jinendra Puja or Abhishek, worshippers wear unstitched, washed cotton or silk clothes (Dhoti-Dupatta).
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Dietary Sanctity:</b>
+          No food or water is carried up sacred hills like Palitana or Shikharji. Food is eaten strictly during daylight hours.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Christian Churches -->
+  <div class="faith-card-etiquette">
+    <div class="faith-header-row">
+      <span class="faith-header-icon">✝️</span>
+      <div>
+        <h3>Churches, Basilicas & Cathedrals (चर्च एवं कैथेड्रल)</h3>
+        <span class="faith-badge faith-christianity">Christianity</span>
+      </div>
+    </div>
+    <div class="rules-grid">
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Reverent Silence:</b>
+          Churches are sanctuaries of quiet prayer. Maintain whispering silence, especially during holy Mass and confessions.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Modest Attire:</b>
+          Cover shoulders and knees. Hats and caps should be removed by gentlemen before entering the sanctuary.
+        </div>
+      </div>
+      <div class="rule-item">
+        <i class="bi bi-check-circle-fill rule-icon"></i>
+        <div class="rule-text">
+          <b>Lighting Candles:</b>
+          Devotees of all faiths can light votive candles at shrines of Our Lady of Good Health, St. Jude, or St. Francis Xavier with personal prayers.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

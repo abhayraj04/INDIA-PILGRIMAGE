@@ -16,9 +16,10 @@
     max-width: 1100px;
     margin: 40px auto 80px auto;
     padding: 0 15px;
+    padding-top: 50px;
   }
 
-  /* Divine Banner */
+  /* Universal Divine Banner */
   .divine-banner {
     background: linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #3a506b 100%);
     border-radius: 24px;
@@ -64,7 +65,7 @@
   }
 
   .divine-banner h1 {
-    font-size: 2.4rem;
+    font-size: 2.3rem;
     font-weight: 800;
     background: linear-gradient(90deg, #fff3b0, #ffd166, #f39c12);
     -webkit-background-clip: text;
@@ -74,8 +75,8 @@
 
   .divine-banner p {
     color: #cbd5e1;
-    font-size: 1.08rem;
-    max-width: 720px;
+    font-size: 1.05rem;
+    max-width: 740px;
     margin: 0 auto;
     line-height: 1.6;
   }
@@ -85,9 +86,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     margin-top: 22px;
     flex-wrap: wrap;
+  }
+
+  .audio-select {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    color: #fff;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .audio-select option {
+    background: #1e293b;
+    color: #fff;
   }
 
   .audio-toggle-btn {
@@ -124,6 +141,7 @@
     justify-content: center;
     gap: 12px;
     margin: 30px 0 25px 0;
+    flex-wrap: wrap;
   }
 
   .mode-tab-btn {
@@ -132,7 +150,7 @@
     color: #475569;
     padding: 12px 26px;
     border-radius: 30px;
-    font-size: 0.98rem;
+    font-size: 0.96rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.25s ease;
@@ -196,7 +214,6 @@
     box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
   }
 
-  /* Quick Destination Selector Pills */
   .dest-pills {
     display: flex;
     flex-wrap: wrap;
@@ -250,7 +267,7 @@
     cursor: not-allowed;
   }
 
-  /* Itinerary Result Display */
+  /* Output Display */
   .itinerary-output {
     display: none;
     margin-top: 35px;
@@ -376,11 +393,6 @@
     animation: fadeIn 0.3s ease;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
   .message.user-message {
     align-self: flex-end;
     flex-direction: row-reverse;
@@ -417,7 +429,6 @@
     font-size: 0.95rem;
     line-height: 1.6;
     word-break: break-word;
-    position: relative;
   }
 
   .user-message .message-bubble {
@@ -434,18 +445,6 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
 
-  .msg-voice-btn {
-    position: absolute;
-    bottom: 6px;
-    right: 8px;
-    background: none;
-    border: none;
-    color: #94a3b8;
-    cursor: pointer;
-    font-size: 0.85rem;
-  }
-  .msg-voice-btn:hover { color: #f59e0b; }
-
   .chat-input-bar {
     padding: 16px 20px;
     background: #ffffff;
@@ -456,13 +455,14 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    position: relative;
   }
 
   .chat-input {
     flex: 1;
     border: 1.5px solid #cbd5e1;
     border-radius: 30px;
-    padding: 12px 20px;
+    padding: 12px 50px 12px 20px;
     font-size: 0.96rem;
     outline: none;
   }
@@ -470,6 +470,19 @@
     border-color: #f59e0b;
     box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
   }
+
+  .chat-mic-btn {
+    position: absolute;
+    right: 58px;
+    background: none;
+    border: none;
+    color: #d97706;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .chat-mic-btn:hover { transform: scale(1.15); }
+  .chat-mic-btn.listening { color: #dc2626; animation: pulseMic 1s infinite; }
 
   .send-btn {
     background: linear-gradient(135deg, #f59e0b, #d97706);
@@ -515,25 +528,30 @@
 
   @media (max-width: 768px) {
     .divine-banner h1 { font-size: 1.7rem; }
-    .planner-card { padding: 20px; }
+    .planner-card { padding: 18px; }
     .chat-messages { height: 380px; }
   }
 </style>
 
 <div class="container ai-guide-page">
 
-  <!-- Header Banner -->
-  <div class="divine-banner" style="margin-top: 75px;">
+  <!-- Header Banner Embracing All Sacred Traditions -->
+  <div class="divine-banner">
     <div class="divine-badge-top">
-      <i class="bi bi-stars"></i> Divya Yatra AI • World Spiritual Companion
+      <span>🕊️</span> Universal Pilgrimage AI Companion • सर्वधर्म समभाव
     </div>
-    <h1>Sacred Pilgrimage AI Planner & Guide</h1>
-    <p>Generate exact hour-by-hour sacred itineraries, official temple darshan protocols, strict dress codes, senior citizen assistance, and peaceful dharamshala stays across India.</p>
+    <h1>Universal Sacred Pilgrimage AI Guide</h1>
+    <p>Accurate hour-by-hour sacred itineraries, official temple/shrine protocols, holy dress codes, senior citizen assistance, and peaceful dharamshalas across all spiritual traditions of Bharat.</p>
 
-    <!-- Divine Audio Synth Toggle -->
+    <!-- Multi-Faith Ambient Meditation Synthesizer -->
     <div class="divine-audio-bar">
+      <select id="audioDroneType" class="audio-select">
+        <option value="om">🪔 Vedic & Temple Bells (432 Hz)</option>
+        <option value="gurbani">☬ Gurbani Peace Tanpura (Sa-Pa Drone)</option>
+        <option value="bowl">☸️ Tibetan Singing Bowl (528 Hz Healing)</option>
+      </select>
       <button id="audioAmbienceBtn" class="audio-toggle-btn" onclick="toggleDivineAmbience()">
-        <i class="bi bi-music-note-beamed"></i> <span id="audioStatusText">Play Meditative Ambience (Om/Tanpura)</span>
+        <i class="bi bi-music-note-beamed"></i> <span id="audioStatusText">Play Meditative Ambience</span>
       </button>
     </div>
   </div>
@@ -552,44 +570,44 @@
   <div id="wizardPane" class="planner-card">
     <div style="margin-bottom: 25px;">
       <h3 style="font-size: 1.35rem; color: #92400e; font-weight: 700; margin-bottom: 6px;">
-        🛕 Create Your Custom Spiritual Journey
+        🕊️ Design Your Sacred Spiritual Itinerary
       </h3>
       <p style="color: #64748b; font-size: 0.95rem; margin: 0;">
-        Select your sacred destination, duration, and preferences for an instant hour-by-hour pilgrimage plan.
+        Choose any holy shrine across all faiths, duration, and preferences for an instant day-by-day pilgrimage timetable.
       </p>
     </div>
 
     <form id="wizardForm" onsubmit="handleWizardSubmit(event)">
       <div class="wizard-grid">
 
-        <!-- Destination -->
+        <!-- Destination with multi-faith pills -->
         <div class="form-group" style="grid-column: span 2;">
-          <label><i class="bi bi-geo-alt-fill text-warning"></i> Sacred Destination / Pilgrimage Circuit:</label>
+          <label><i class="bi bi-geo-alt-fill text-warning"></i> Sacred Destination or Pilgrimage Circuit:</label>
           <input
             type="text"
             id="wizardDest"
             class="form-control"
-            placeholder="e.g. Varanasi (Kashi), Kedarnath & Badrinath, Tirupati Balaji, Ayodhya, Golden Temple..."
+            placeholder="e.g. Golden Temple Amritsar, Varanasi Kashi, Ajmer Sharif, Bodh Gaya, Velankanni, Kedarnath..."
             value="<%= initialDestination %>"
             required
           />
           <div class="dest-pills">
-            <span class="dest-pill" onclick="pickDest('Varanasi (Kashi)')">🕉️ Varanasi</span>
-            <span class="dest-pill" onclick="pickDest('Kedarnath & Badrinath (Uttarakhand)')">🏔️ Kedarnath</span>
-            <span class="dest-pill" onclick="pickDest('Tirupati Balaji (Andhra Pradesh)')">🛕 Tirupati Balaji</span>
-            <span class="dest-pill" onclick="pickDest('Ayodhya Ram Mandir')">🏹 Ayodhya</span>
             <span class="dest-pill" onclick="pickDest('Golden Temple (Amritsar)')">☬ Golden Temple</span>
-            <span class="dest-pill" onclick="pickDest('Puri Jagannath Dham')">🌊 Puri Jagannath</span>
-            <span class="dest-pill" onclick="pickDest('Shirdi Sai Baba')">🌸 Shirdi</span>
-            <span class="dest-pill" onclick="pickDest('Rameswaram Jyotirlinga')">🔱 Rameswaram</span>
+            <span class="dest-pill" onclick="pickDest('Varanasi (Kashi Vishwanath & Ganga Ghats)')">🛕 Varanasi (Kashi)</span>
+            <span class="dest-pill" onclick="pickDest('Ajmer Sharif Dargah (Khwaja Garib Nawaz)')">☪️ Ajmer Sharif</span>
+            <span class="dest-pill" onclick="pickDest('Mahabodhi Temple & Bodh Gaya')">☸️ Bodh Gaya</span>
+            <span class="dest-pill" onclick="pickDest('Palitana & Dilwara Jain Temples')">🌸 Palitana & Dilwara</span>
+            <span class="dest-pill" onclick="pickDest('Basilica of Bom Jesus (Goa) & Velankanni')">✝️ Basilica of Bom Jesus</span>
+            <span class="dest-pill" onclick="pickDest('Kedarnath & Badrinath (Uttarakhand)')">🏔️ Kedarnath Dham</span>
+            <span class="dest-pill" onclick="pickDest('Tirupati Balaji (Sri Venkateswara)')">🛕 Tirupati Balaji</span>
           </div>
         </div>
 
         <!-- Duration -->
         <div class="form-group">
-          <label><i class="bi bi-calendar-event-fill text-warning"></i> Number of Days:</label>
+          <label><i class="bi bi-calendar-event-fill text-warning"></i> Total Duration:</label>
           <select id="wizardDays" class="form-select">
-            <option value="1">1 Day (Express Darshan)</option>
+            <option value="1">1 Day (Express Darshan / Ziyarat)</option>
             <option value="2">2 Days (Weekend Pilgrimage)</option>
             <option value="3" selected>3 Days (Complete Spiritual Tour)</option>
             <option value="5">5 Days (Deep Yatra & Circuit)</option>
@@ -608,12 +626,12 @@
           </select>
         </div>
 
-        <!-- Stay & Budget Style -->
+        <!-- Stay Style -->
         <div class="form-group">
-          <label><i class="bi bi-wallet2 text-warning"></i> Accommodation & Budget:</label>
+          <label><i class="bi bi-wallet2 text-warning"></i> Accommodation & Stays:</label>
           <select id="wizardBudget" class="form-select">
-            <option value="Budget">Dharamshala & Ashrams (Budget-Friendly)</option>
-            <option value="Standard" selected>Standard Trust Guesthouses & Hotels</option>
+            <option value="Budget" selected>Ashram, Sarai & Dharamshala (Peaceful & Budget)</option>
+            <option value="Standard">Standard Trust Guesthouses & Hotels</option>
             <option value="Premium">Premium Hotels with VIP Assistance</option>
           </select>
         </div>
@@ -623,19 +641,19 @@
           <label><i class="bi bi-speedometer2 text-warning"></i> Travel Rhythm:</label>
           <select id="wizardPace" class="form-select">
             <option value="Peaceful & Meditative" selected>Peaceful & Meditative (Low rush)</option>
-            <option value="Moderate">Moderate (Balancing Temples & Sites)</option>
-            <option value="Express">Express (Cover Maximum Shrines)</option>
+            <option value="Moderate">Moderate (Balancing Shrines & Heritage)</option>
+            <option value="Express">Express (Cover Maximum Sacred Sites)</option>
           </select>
         </div>
 
         <!-- Special Considerations -->
         <div class="form-group" style="grid-column: span 2;">
-          <label><i class="bi bi-heart-pulse-fill text-warning"></i> Special Pilgrim Support Needed:</label>
+          <label><i class="bi bi-heart-pulse-fill text-warning"></i> Pilgrim Accessibility & Support:</label>
           <select id="wizardNeeds" class="form-select">
-            <option value="None" selected>General Devotees (No special physical restrictions)</option>
-            <option value="Senior Citizens">Senior Citizens (Needs battery carts, lift, minimum steps)</option>
+            <option value="None" selected>General Devotees (Standard mobility)</option>
+            <option value="Senior Citizens">Senior Citizens (Needs battery carts, lift, minimal walking)</option>
             <option value="Wheelchair Accessibility">Wheelchair Accessibility & Divyangjan facilities</option>
-            <option value="Family with Toddlers">Family traveling with Young Children</option>
+            <option value="Family with Young Children">Family with Young Children</option>
           </select>
         </div>
 
@@ -650,8 +668,8 @@
     <div id="itineraryOutput" class="itinerary-output">
       <div class="itinerary-header-bar">
         <div class="itinerary-title-meta">
-          <h3 id="itineraryResultHeading">🕉️ Your Bespoke Sacred Itinerary</h3>
-          <small style="color: #64748b;">Generated with devotion & official shrine timings</small>
+          <h3 id="itineraryResultHeading">🕊️ Your Sacred Pilgrimage Plan</h3>
+          <small style="color: #64748b;">Generated with devotion and official shrine timings</small>
         </div>
         <div class="itinerary-actions">
           <button id="voiceNarrateBtn" class="tool-btn btn-voice" onclick="toggleSpeechNarration()">
@@ -677,26 +695,32 @@
   <div id="chatPane" class="planner-card chat-pane">
     <div style="margin-bottom: 20px;">
       <h3 style="font-size: 1.35rem; color: #92400e; font-weight: 700; margin-bottom: 6px;">
-        💬 Direct Dialogue with Divya Yatra AI
+        💬 Ask Divya Yatra AI Anything
       </h3>
       <p style="color: #64748b; font-size: 0.95rem; margin: 0;">
-        Ask specific questions regarding temple dress codes, VIP passes, sacred rituals, or custom questions.
+        Ask specific questions about any temple, gurdwara, dargah, monastery, or basilica in India.
       </p>
     </div>
 
-    <!-- Quick Prompt Pills -->
+    <!-- Multi-Faith Quick Prompts -->
     <div style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 8px;">
+      <button class="chip-btn" onclick="sendChatPrompt('What are the rules, head covering, and free langar timings at Golden Temple Amritsar?')">
+        ☬ Golden Temple Langar
+      </button>
+      <button class="chip-btn" onclick="sendChatPrompt('What is the respectful etiquette and best time for Ziyarat at Ajmer Sharif Dargah?')">
+        ☪️ Ajmer Sharif Ziyarat
+      </button>
+      <button class="chip-btn" onclick="sendChatPrompt('Guide me on meditation timings and rules under the sacred Bodhi Tree in Bodh Gaya')">
+        ☸️ Bodh Gaya Meditation
+      </button>
+      <button class="chip-btn" onclick="sendChatPrompt('What are the holy masses and feast dates of Basilica of Bom Jesus Goa?')">
+        ✝️ Bom Jesus Basilica Goa
+      </button>
+      <button class="chip-btn" onclick="sendChatPrompt('What are the climbing tips and no-leather rules for Palitana Jain temples?')">
+        🌸 Palitana Jain Pilgrimage
+      </button>
       <button class="chip-btn" onclick="sendChatPrompt('What is the strict dress code for Tirupati Balaji for men and women?')">
-        👔 Tirupati Dress Code
-      </button>
-      <button class="chip-btn" onclick="sendChatPrompt('How to book Mahakaleshwar Ujjain Bhasma Aarti tickets?')">
-        🔱 Mahakaleshwar Bhasma Aarti
-      </button>
-      <button class="chip-btn" onclick="sendChatPrompt('What are the best dharamshalas and free langar rules in Amritsar?')">
-        ☬ Amritsar Dharamshalas
-      </button>
-      <button class="chip-btn" onclick="sendChatPrompt('Give me a detailed checklist for Kedarnath high altitude trek')">
-        🏔️ Kedarnath Checklist
+        🛕 Tirupati Balaji Dress Code
       </button>
     </div>
 
@@ -705,7 +729,7 @@
       <div class="chat-header">
         <div style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: #166534;">
           <span style="width: 8px; height: 8px; background: #22c55e; border-radius: 50%;"></span>
-          Divya Yatra AI is Online
+          Divya Yatra AI is Online (All Traditions Supported)
         </div>
         <button class="tool-btn" onclick="clearConversation()">
           <i class="bi bi-trash3"></i> Clear Chat
@@ -714,10 +738,10 @@
 
       <div class="chat-messages" id="chatStream">
         <div class="message bot-message">
-          <div class="message-avatar">🪔</div>
+          <div class="message-avatar">🕊️</div>
           <div class="message-bubble">
-            <h4 style="margin: 0 0 6px 0; color: #92400e;">🙏 Namaste!</h4>
-            I am <b>Divya Yatra AI</b>. Ask me anything about any sacred shrine in India: aarti schedules, VIP token procedures, food, stay, or routes!
+            <h4 style="margin: 0 0 6px 0; color: #92400e;">🙏 Welcome to Universal Spiritual Guidance!</h4>
+            I am <b>Divya Yatra AI</b>. I provide respectful, expert guidance across all sacred traditions of India: temples, gurdwaras, dargahs, stupas, Jain tirthas, and cathedrals. Ask me any question!
           </div>
         </div>
       </div>
@@ -729,10 +753,13 @@
               type="text"
               id="freeChatInput"
               class="chat-input"
-              placeholder="Ask any spiritual or pilgrimage question (e.g. Best time for Char Dham, Rameswaram 22 kund snan...)"
+              placeholder="Ask anything (e.g. Golden Temple timings, Ajmer Sharif chadar, Bodh Gaya meditation...)"
               autocomplete="off"
               required
             />
+            <button type="button" class="chat-mic-btn" id="chatMicBtn" title="Speak your question">
+              <i class="bi bi-mic-fill"></i>
+            </button>
             <button type="submit" id="freeChatSendBtn" class="send-btn" aria-label="Send message">
               <i class="bi bi-send-fill"></i>
             </button>
@@ -750,15 +777,14 @@
   let isSpeaking = false;
   let synth = window.speechSynthesis;
   let audioContext = null;
-  let oscillator = null;
   let isAudioPlaying = false;
 
   const chatStream = document.getElementById("chatStream");
   const freeChatInput = document.getElementById("freeChatInput");
   const freeChatSendBtn = document.getElementById("freeChatSendBtn");
+  const chatMicBtn = document.getElementById("chatMicBtn");
   const chatHistory = [];
 
-  // Initial prompt auto-trigger from query param
   const initialPromptFromQuery = <%- JSON.stringify(initialPrompt || "") %>;
   window.addEventListener("DOMContentLoaded", () => {
     if (initialPromptFromQuery && initialPromptFromQuery.trim()) {
@@ -847,7 +873,7 @@
       const data = await res.json();
       currentRawItineraryText = data.itinerary || "";
 
-      heading.innerText = `🕉️ ${days}-Day Sacred Pilgrimage to ${dest}`;
+      heading.innerText = `🕊️ ${days}-Day Sacred Pilgrimage to ${dest}`;
       renderedDiv.innerHTML = formatMarkdown(currentRawItineraryText);
       outputDiv.style.display = "block";
       outputDiv.scrollIntoView({ behavior: "smooth" });
@@ -888,12 +914,6 @@
         textLabel.innerText = "Listen";
       };
 
-      utterance.onerror = () => {
-        isSpeaking = false;
-        btn.classList.remove("speaking");
-        textLabel.innerText = "Listen";
-      };
-
       synth.speak(utterance);
       isSpeaking = true;
       btn.classList.add("speaking");
@@ -914,14 +934,15 @@
 
   function shareWhatsApp() {
     if (!currentRawItineraryText) return;
-    const text = encodeURIComponent(`🕉️ Sacred Pilgrimage Plan from India Pilgrimage Guide:\n\n${currentRawItineraryText.substring(0, 900)}...\n\nView more at: ${window.location.href}`);
+    const text = encodeURIComponent(`🕊️ Sacred Pilgrimage Plan from India Pilgrimage Guide:\n\n${currentRawItineraryText.substring(0, 900)}...\n\nView more at: ${window.location.href}`);
     window.open(`https://api.whatsapp.com/send?text=${text}`, "_blank");
   }
 
-  // Divine Ambience Audio Synthesizer (Vedic Tanpura / Om 432 Hz Drone)
+  // Multi-Faith Meditation Audio Synthesizer
   function toggleDivineAmbience() {
     const btn = document.getElementById("audioAmbienceBtn");
     const text = document.getElementById("audioStatusText");
+    const droneType = document.getElementById("audioDroneType").value;
 
     if (isAudioPlaying) {
       if (audioContext) {
@@ -930,22 +951,25 @@
       }
       isAudioPlaying = false;
       btn.classList.remove("playing");
-      text.innerText = "Play Meditative Ambience (Om/Tanpura)";
+      text.innerText = "Play Meditative Ambience";
     } else {
       try {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         audioContext = new AudioContext();
 
-        // Harmonious chord: 136.1 Hz (Om Frequency) + 204.15 Hz + 272.2 Hz
-        const freqs = [136.1, 204.15, 272.2, 408.3];
+        let freqs = [136.1, 204.15, 272.2]; // default Om
+        if (droneType === "gurbani") {
+          freqs = [146.83, 220.0, 293.66]; // D-natural Sa-Pa
+        } else if (droneType === "bowl") {
+          freqs = [261.63, 528.0, 792.0]; // 528 Hz healing bowl
+        }
+
         freqs.forEach((freq, idx) => {
           const osc = audioContext.createOscillator();
           const gain = audioContext.createGain();
 
           osc.type = idx % 2 === 0 ? "sine" : "triangle";
           osc.frequency.setValueAtTime(freq, audioContext.currentTime);
-
-          // Gentle low volume
           gain.gain.setValueAtTime(0.04 / (idx + 1), audioContext.currentTime);
 
           osc.connect(gain);
@@ -955,7 +979,7 @@
 
         isAudioPlaying = true;
         btn.classList.add("playing");
-        text.innerText = "Pause Meditative Ambience 🎶";
+        text.innerText = "Pause Ambience 🎶";
       } catch (e) {
         console.warn("Audio synthesis error:", e);
       }
@@ -970,7 +994,7 @@
 
     const avatar = document.createElement("div");
     avatar.className = "message-avatar";
-    avatar.innerHTML = isUser ? '<i class="bi bi-person-fill"></i>' : '🪔';
+    avatar.innerHTML = isUser ? '<i class="bi bi-person-fill"></i>' : '🕊️';
 
     const bubble = document.createElement("div");
     bubble.className = "message-bubble";
@@ -994,11 +1018,10 @@
     freeChatInput.value = "";
     freeChatSendBtn.disabled = true;
 
-    // Temporary loader
     const tempLoader = document.createElement("div");
     tempLoader.id = "chatStreamLoader";
     tempLoader.className = "message bot-message";
-    tempLoader.innerHTML = `<div class="message-avatar">🪔</div><div class="message-bubble"><i>Consulting sacred texts & yatra archives...</i></div>`;
+    tempLoader.innerHTML = `<div class="message-avatar">🕊️</div><div class="message-bubble"><i>Consulting sacred archives across all traditions...</i></div>`;
     chatStream.appendChild(tempLoader);
     chatStream.scrollTop = chatStream.scrollHeight;
 
@@ -1035,13 +1058,39 @@
   function clearConversation() {
     chatStream.innerHTML = `
       <div class="message bot-message">
-        <div class="message-avatar">🪔</div>
+        <div class="message-avatar">🕊️</div>
         <div class="message-bubble">
-          <h4 style="margin:0 0 6px 0; color:#92400e;">🙏 Namaste!</h4>
-          Conversation cleared. Ask any new pilgrimage question!
+          <h4 style="margin:0 0 6px 0; color:#92400e;">🙏 Peace & Blessings!</h4>
+          Conversation cleared. Ask any new pilgrimage question across any spiritual faith!
         </div>
       </div>
     `;
     chatHistory.length = 0;
+  }
+
+  // Voice Recognition for Chat Input
+  if (chatMicBtn && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-IN';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    chatMicBtn.addEventListener("click", () => {
+      chatMicBtn.classList.add("listening");
+      recognition.start();
+    });
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      freeChatInput.value = transcript;
+      chatMicBtn.classList.remove("listening");
+      sendChatPrompt(transcript);
+    };
+
+    recognition.onerror = () => { chatMicBtn.classList.remove("listening"); };
+    recognition.onend = () => { chatMicBtn.classList.remove("listening"); };
+  } else if (chatMicBtn) {
+    chatMicBtn.style.display = "none";
   }
 </script>

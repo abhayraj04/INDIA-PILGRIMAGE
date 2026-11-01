@@ -7,12 +7,12 @@
     max-width: 1260px;
     margin: 40px auto 70px auto;
     padding: 0 15px;
+    padding-top: 60px;
   }
 
   .listings-header {
     text-align: center;
     margin-bottom: 35px;
-    padding-top: 60px;
   }
 
   .listings-header h1 {
@@ -28,7 +28,7 @@
   .listings-header p {
     color: #57534e;
     font-size: 1.05rem;
-    max-width: 650px;
+    max-width: 700px;
     margin: 0 auto;
   }
 
@@ -37,21 +37,23 @@
     background: #ffffff;
     border: 1px solid rgba(217, 119, 6, 0.25);
     border-radius: 20px;
-    padding: 20px 24px;
+    padding: 22px 24px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     margin-bottom: 35px;
   }
 
   .search-input-box {
     position: relative;
-    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
   }
 
   .search-input-box input {
     width: 100%;
     border: 1.5px solid #cbd5e1;
     border-radius: 30px;
-    padding: 12px 20px 12px 46px;
+    padding: 12px 50px 12px 46px;
     font-size: 1rem;
     outline: none;
     transition: all 0.2s;
@@ -65,29 +67,60 @@
   .search-icon-inside {
     position: absolute;
     left: 18px;
-    top: 50%;
-    transform: translateY(-50%);
     color: #94a3b8;
     font-size: 1.1rem;
   }
 
+  .mic-btn {
+    position: absolute;
+    right: 14px;
+    background: none;
+    border: none;
+    color: #d97706;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 4px;
+  }
+  .mic-btn:hover { transform: scale(1.15); color: #b45309; }
+  .mic-btn.listening { color: #dc2626; animation: pulseMic 1s infinite; }
+
+  @keyframes pulseMic {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+  }
+
+  /* Filter Section */
+  .filter-section-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 8px;
+  }
+
   .filter-chips-row {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
     align-items: center;
+    margin-bottom: 14px;
   }
 
   .filter-chip-btn {
     background: #f8fafc;
     border: 1px solid #cbd5e1;
     border-radius: 20px;
-    padding: 6px 16px;
-    font-size: 0.86rem;
+    padding: 6px 14px;
+    font-size: 0.84rem;
     color: #475569;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
   }
 
   .filter-chip-btn:hover {
@@ -104,7 +137,6 @@
   }
 
   .results-count-badge {
-    margin-left: auto;
     font-size: 0.85rem;
     color: #64748b;
     font-weight: 600;
@@ -160,9 +192,9 @@
     right: 12px;
     background: rgba(15, 23, 42, 0.8);
     color: #fbbf24;
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     font-weight: 700;
-    padding: 4px 10px;
+    padding: 3px 9px;
     border-radius: 20px;
     backdrop-filter: blur(4px);
     border: 1px solid rgba(251, 191, 36, 0.4);
@@ -173,6 +205,10 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+  }
+
+  .faith-tag-row {
+    margin-bottom: 8px;
   }
 
   .place-title {
@@ -268,7 +304,7 @@
 
   @media (max-width: 768px) {
     .listings-header h1 { font-size: 1.8rem; }
-    .results-count-badge { width: 100%; margin-top: 8px; }
+    .toolbar-card { padding: 16px; }
   }
 </style>
 
@@ -276,32 +312,52 @@
 
   <!-- Header -->
   <div class="listings-header">
-    <h1><span style="font-size: 2.4rem;">🛕</span> Sacred Pilgrimage Places of India</h1>
-    <p>Discover revered temples, sacred rivers, gurdwaras, and spiritual sanctuaries across the holy land of Bharat.</p>
+    <div style="font-size: 2rem; margin-bottom: 8px;">🛕 • ☬ • ☪️ • ☸️ • 🌸 • ✝️</div>
+    <h1>Sacred Pilgrimage Places of India</h1>
+    <p>Explore revered pilgrimage sites across all spiritual traditions of Bharat: Temples, Gurdwaras, Dargahs, Monasteries, Jain Tirthas, and Historic Basilicas.</p>
   </div>
 
-  <!-- Search & Filter Toolbar -->
+  <!-- Search & Multi-Faith Filter Toolbar -->
   <div class="toolbar-card">
+    <!-- Live Search with Voice Mic -->
     <div class="search-input-box">
       <i class="bi bi-search search-icon-inside"></i>
       <input
         type="text"
         id="liveSearchInput"
-        placeholder="Search any temple, city, deity, or region (e.g. Varanasi, Shiva, Tirupati, Ganga, Golden Temple)..."
+        placeholder="Search any place, deity, or tradition (e.g. Varanasi, Golden Temple, Ajmer, Bodh Gaya, Velankanni)..."
         autocomplete="off"
       />
+      <button type="button" class="mic-btn" id="voiceSearchBtn" title="Search by Voice (Hindi / English)">
+        <i class="bi bi-mic-fill"></i>
+      </button>
     </div>
 
-    <div class="filter-chips-row">
-      <button class="filter-chip-btn active" onclick="filterByRegion('all', this)">All Places</button>
-      <button class="filter-chip-btn" onclick="filterByKeyword('North', this)">North India</button>
-      <button class="filter-chip-btn" onclick="filterByKeyword('South', this)">South India</button>
-      <button class="filter-chip-btn" onclick="filterByKeyword('East', this)">East India</button>
-      <button class="filter-chip-btn" onclick="filterByKeyword('West', this)">West India</button>
-      <button class="filter-chip-btn" onclick="filterByKeyword('Central', this)">Central India</button>
-      <button class="filter-chip-btn" onclick="filterByKeyword('Temple', this)">Temples</button>
-      <button class="filter-chip-btn" onclick="filterByKeyword('Dham', this)">Dhams</button>
-      
+    <!-- Faith Filters -->
+    <div>
+      <div class="filter-section-title">Filter by Spiritual Tradition:</div>
+      <div class="filter-chips-row">
+        <button class="filter-chip-btn active" onclick="filterByFaith('all', this)">🕊️ All Traditions</button>
+        <button class="filter-chip-btn" onclick="filterByFaith('Hinduism', this)">🛕 Hinduism</button>
+        <button class="filter-chip-btn" onclick="filterByFaith('Sikhism', this)">☬ Sikhism</button>
+        <button class="filter-chip-btn" onclick="filterByFaith('Islam & Sufism', this)">☪️ Islam & Sufism</button>
+        <button class="filter-chip-btn" onclick="filterByFaith('Buddhism', this)">☸️ Buddhism</button>
+        <button class="filter-chip-btn" onclick="filterByFaith('Jainism', this)">🌸 Jainism</button>
+        <button class="filter-chip-btn" onclick="filterByFaith('Christianity', this)">✝️ Christianity</button>
+      </div>
+    </div>
+
+    <!-- Region Filters & Counter -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; border-top: 1px solid #f1f5f9; padding-top: 12px;">
+      <div class="filter-chips-row" style="margin-bottom: 0;">
+        <span style="font-size: 0.8rem; font-weight: 700; color: #64748b; margin-right: 4px;">Region:</span>
+        <button class="filter-chip-btn" onclick="filterByKeyword('North', this)">North India</button>
+        <button class="filter-chip-btn" onclick="filterByKeyword('South', this)">South India</button>
+        <button class="filter-chip-btn" onclick="filterByKeyword('East', this)">East India</button>
+        <button class="filter-chip-btn" onclick="filterByKeyword('West', this)">West India</button>
+        <button class="filter-chip-btn" onclick="filterByKeyword('Central', this)">Central India</button>
+      </div>
+
       <span class="results-count-badge" id="resultsCount">
         Showing <%= allListings.length %> destinations
       </span>
@@ -311,8 +367,13 @@
   <!-- Places Grid -->
   <div class="places-grid" id="placesGrid">
     <% for(let listing of allListings){ %>
+      <% 
+        const faithName = listing.faith || 'Hinduism';
+        const faithSlug = faithName.toLowerCase().replace(/[^a-z]/g, '');
+      %>
       <div
         class="place-card-wrap"
+        data-faith="<%= faithName %>"
         data-title="<%= (listing.title || '').toLowerCase() %>"
         data-desc="<%= (listing.description || '').toLowerCase() %>"
         data-near="<%= (listing.nearbyAttractions || '').toLowerCase() %>"
@@ -334,6 +395,12 @@
         </div>
 
         <div class="place-body">
+          <div class="faith-tag-row">
+            <span class="faith-badge faith-<%= faithSlug %>">
+              <%= listing.faithIcon || '🕊️' %> <%= faithName %>
+            </span>
+          </div>
+
           <h3 class="place-title"><%= listing.title %></h3>
           <p class="place-desc"><%= listing.description || 'Sacred pilgrimage sanctuary in India.' %></p>
 
@@ -366,32 +433,42 @@
   <!-- Empty Search State -->
   <div id="emptySearchState" class="empty-state">
     <span style="font-size: 3rem;">🔍</span>
-    <h4 style="margin-top: 15px; color: #475569;">No sacred places found matching your search.</h4>
-    <p>Try searching with another keyword or explore All Places.</p>
-    <button class="btn btn-warning" onclick="resetFilters()">View All Places</button>
+    <h4 style="margin-top: 15px; color: #475569;">No sacred places found matching your filter.</h4>
+    <p>Try searching with another keyword or explore All Traditions.</p>
+    <button class="btn btn-warning" onclick="resetAllFilters()">Reset All Filters</button>
   </div>
 
 </div>
 
 <script>
+  let activeFaithFilter = "all";
+  let activeKeywordFilter = "";
+
   const liveSearch = document.getElementById("liveSearchInput");
   const placesGrid = document.getElementById("placesGrid");
   const cards = Array.from(document.querySelectorAll(".place-card-wrap"));
   const countBadge = document.getElementById("resultsCount");
   const emptyState = document.getElementById("emptySearchState");
+  const voiceSearchBtn = document.getElementById("voiceSearchBtn");
 
   function filterCards() {
     const q = liveSearch.value.toLowerCase().trim();
     let visibleCount = 0;
 
     cards.forEach(card => {
+      const cardFaith = card.getAttribute("data-faith") || "";
       const title = card.getAttribute("data-title") || "";
       const desc = card.getAttribute("data-desc") || "";
       const near = card.getAttribute("data-near") || "";
       const station = card.getAttribute("data-station") || "";
 
-      const match = !q || title.includes(q) || desc.includes(q) || near.includes(q) || station.includes(q);
-      if (match) {
+      // Match faith
+      const matchFaith = (activeFaithFilter === "all" || cardFaith === activeFaithFilter);
+
+      // Match text query
+      const matchText = !q || title.includes(q) || desc.includes(q) || near.includes(q) || station.includes(q) || cardFaith.toLowerCase().includes(q);
+
+      if (matchFaith && matchText) {
         card.style.display = "flex";
         visibleCount++;
       } else {
@@ -409,24 +486,56 @@
 
   liveSearch.addEventListener("input", filterCards);
 
-  function filterByRegion(region, btn) {
-    document.querySelectorAll(".filter-chip-btn").forEach(b => b.classList.remove("active"));
+  function filterByFaith(faith, btn) {
+    activeFaithFilter = faith;
+    const parentRow = btn.parentElement;
+    parentRow.querySelectorAll(".filter-chip-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-    liveSearch.value = "";
     filterCards();
   }
 
   function filterByKeyword(keyword, btn) {
-    document.querySelectorAll(".filter-chip-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
     liveSearch.value = keyword;
     filterCards();
   }
 
-  function resetFilters() {
+  function resetAllFilters() {
+    activeFaithFilter = "all";
     liveSearch.value = "";
     document.querySelectorAll(".filter-chip-btn").forEach(b => b.classList.remove("active"));
-    document.querySelector(".filter-chip-btn").classList.add("active");
+    const firstChip = document.querySelector(".filter-chip-btn");
+    if (firstChip) firstChip.classList.add("active");
     filterCards();
+  }
+
+  // Voice Search with Web Speech Recognition
+  if (voiceSearchBtn && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-IN'; // Supports Indian English and Hindi accent
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    voiceSearchBtn.addEventListener("click", () => {
+      voiceSearchBtn.classList.add("listening");
+      recognition.start();
+    });
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      liveSearch.value = transcript;
+      filterCards();
+      voiceSearchBtn.classList.remove("listening");
+    };
+
+    recognition.onerror = () => {
+      voiceSearchBtn.classList.remove("listening");
+    };
+
+    recognition.onend = () => {
+      voiceSearchBtn.classList.remove("listening");
+    };
+  } else if (voiceSearchBtn) {
+    voiceSearchBtn.style.display = "none";
   }
 </script>
