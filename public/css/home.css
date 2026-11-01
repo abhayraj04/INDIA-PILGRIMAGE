@@ -1046,6 +1046,32 @@ max-height:80%;
     font-size: 14px;        
     padding: 8px 10px;
   }
+
+  .sear {
+    width: 92% !important;
+    margin: 15px auto !important;
+  }
+  
+  .flip-card {
+    width: 92% !important;
+    max-width: 92% !important;
+  }
+
+  .card1, .card2 {
+    width: 92% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .show-card {
+    width: 92% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .lightbox-content {
+    width: 92% !important;
+  }
 }
 
 
