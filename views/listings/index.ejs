@@ -1,263 +1,432 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 <style>
-     body {
-   font-family: 'Roboto', sans-serif;
-   margin:0; padding:0; 
-   background:#fdfdfd; 
-   background: linear-gradient(90deg,rgb(243, 241, 231),rgb(166, 165, 161));
-   color:#333; 
+  .listings-page-container {
+    max-width: 1260px;
+    margin: 40px auto 70px auto;
+    padding: 0 15px;
   }
 
-header {
-  background: linear-gradient(90deg,gold ,rgb(159, 136, 2));
-  color:white; 
-  text-align:center; 
-  padding:20px 0; 
-}
-
-footer { 
-  text-align:center; 
-   background: linear-gradient(90deg,gold ,rgb(159, 136, 2));
-  color:white; 
-  padding:20px;
- }
-
- .abr{
-  background-color: rgb(232, 160, 17);
-      border-radius: 1em;
-margin-left: 12%;
-   margin-bottom: 4%;
-  height: 40px;
-  width: 100px;
-  text-decoration: none;
- }
- .abr1{
-  background-color: rgb(232, 160, 17);
-   border-radius: 1em;
-   height: 40px;
-  width: 100px;
-  margin-left: 4%;
-     margin-bottom: 4%;
- }
-      .abr1 a{
-      text-decoration: none;
-     color: black;
-
-     }
-
- 
- .abr:hover {
-   background-color: #2804ad; 
-      transform: scale(0.9);  
-   }
-   .abr1:hover {
-   background-color: #2804ad; 
-      transform: scale(0.9);  
-   }
- 
-
- .home h2 { 
-  text-align:center; 
-  margin:30px 0; 
-  color:#004080; 
-}
-
-.region-links { 
-  display:flex; 
-  flex-wrap:wrap; 
-  justify-content:center; 
-  gap:30px; 
-  padding:20px; 
-}
-
-
-.region-card {
-  background:rgb(232, 152, 4);
-  color:white;
-  padding:50px 40px;
-  border-radius:15px;
-  font-size:20px;
-  text-decoration:none;
-  font-weight:bold;
-  text-align:center;
-  transition: transform 0.3s, background 0.3s;
-}
-
-.region-card:hover {
-   background:#00aaff; 
-   transform:translateY(-10px); 
+  .listings-header {
+    text-align: center;
+    margin-bottom: 35px;
+    padding-top: 60px;
   }
 
- .card-container { 
-  display:flex; 
-  flex-wrap:wrap; 
-  gap:20px; 
-  justify-content:center; 
-  padding:20px; 
-}
-
-.card { 
-  background:white; 
-  width:250px; 
-  border-radius:15px; 
-  overflow:hidden; 
-  box-shadow:0 8px 20px rgba(0,0,0,0.15); 
-  cursor:pointer;
-   transition: transform 0.3s,
-  box-shadow 0.3s; }
-
-  .card1 { 
-    margin-left: 25%;
+  .listings-header h1 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #78350f;
+    margin-bottom: 10px;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-  background:white; 
-  width: 600px;
-   border-radius:15px; 
-  overflow:hidden; 
-  box-shadow:0 8px 20px rgba(0,0,0,0.15); 
-  cursor:pointer;
-   transition: transform 0.3s,
-  box-shadow 0.3s;
-    margin-top: 5%;
- }
-  .card2 { 
-    margin-top: 5%;
-    margin-left: 15%;
-    align-items: center;
-    justify-content: center;
-  background:white; 
-  width: 900px;
-   border-radius:15px; 
-  overflow:hidden; 
-  box-shadow:0 8px 20px rgba(0,0,0,0.15); 
-  cursor:pointer;
-   transition: transform 0.3s,
-  box-shadow 0.3s; }
-.card img { 
-  width:100%; 
-  height:160px; 
-  object-fit:cover; }
+    gap: 12px;
+  }
 
-.card h3 { 
-  padding:10px; 
-  color:#004080; 
-}
+  .listings-header p {
+    color: #57534e;
+    font-size: 1.05rem;
+    max-width: 650px;
+    margin: 0 auto;
+  }
 
-.card p { 
-  padding:0 10px 10px 10px; 
-  font-size:14px; 
-  color:#555; 
-}
+  /* Search & Filter Toolbar */
+  .toolbar-card {
+    background: #ffffff;
+    border: 1px solid rgba(217, 119, 6, 0.25);
+    border-radius: 20px;
+    padding: 20px 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    margin-bottom: 35px;
+  }
 
-.card:hover { 
-  transform:translateY(-10px); 
-  box-shadow:0 15px 25px rgba(0,0,0,0.3); 
-}
-.card1:hover { 
-  transform:translateY(-10px); 
-  box-shadow:0 15px 25px rgba(0,0,0,0.3); 
-}
-.card2:hover { 
-  transform:translateY(-10px); 
-  box-shadow:0 15px 25px rgba(0,0,0,0.3); 
-}
-nav { 
-  padding:10px; 
-  text-align:center; 
-}
+  .search-input-box {
+    position: relative;
+    margin-bottom: 16px;
+  }
 
-nav a { 
-  text-decoration:none; 
-  color:#004080; 
-  font-weight:bold; 
-}
-
- .lightbox { 
-  display:none; 
-  position:fixed;
-  z-index:999; 
-  padding-top:50px; 
-  left:0; top:0; 
-  width:100%; 
-  height:100%; 
-  overflow:auto; 
-  background:rgba(0,0,0,0.9);
-}
-
-.lightbox-img { 
-display:block; 
-margin:auto; 
-max-width:80%; 
-max-height:80%; 
-}
-
-.lightbox-caption { text-align:center; color:#fff; margin-top:10px; font-size:18px; }
-.lightbox .close { position:absolute; top:20px; right:35px; color:#fff; font-size:40px; cursor:pointer; transition:0.3s; }
-.lightbox .close:hover { color:#bbb; }
-
- @media(max-width:768px){
-  .card-container {
-     flex-direction:column; 
-     align-items:center;
-     }
-
-
-  .region-links { 
-  flex-direction:column; 
-  align-items:center; 
-}
-  .region-card { 
-  width:80%; 
-  padding:40px 20px; 
-  font-size:18px; }
-}
-
-.h11 {
-    font-size: xxx-large;
-    margin-bottom: 20px;
-    font-family: Open Sans, sans-serif ;
-    font-weight: 500;
-    opacity: 0.85;
-    border-right: 5px solid;
+  .search-input-box input {
     width: 100%;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 30px;
+    padding: 12px 20px 12px 46px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  .search-input-box input:focus {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+  }
+
+  .search-icon-inside {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 1.1rem;
+  }
+
+  .filter-chips-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter-chip-btn {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.86rem;
+    color: #475569;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-chip-btn:hover {
+    background: #fffbeb;
+    border-color: #f59e0b;
+    color: #b45309;
+  }
+
+  .filter-chip-btn.active {
+    background: #f59e0b;
+    border-color: #d97706;
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(217, 119, 6, 0.3);
+  }
+
+  .results-count-badge {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 600;
+  }
+
+  /* Cards Grid */
+  .places-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .place-card-wrap {
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .place-card-wrap:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(217, 119, 6, 0.15);
+    border-color: rgba(245, 158, 11, 0.4);
+  }
+
+  .place-thumb-box {
+    position: relative;
+    width: 100%;
+    height: 195px;
+    overflow: hidden;
+    background: #1e293b;
+  }
+
+  .place-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .place-card-wrap:hover .place-thumb-img {
+    transform: scale(1.08);
+  }
+
+  .place-distance-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(15, 23, 42, 0.8);
+    color: #fbbf24;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(251, 191, 36, 0.4);
+  }
+
+  .place-body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .place-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #78350f;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .place-desc {
+    color: #64748b;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+  }
+
+  .place-meta {
+    font-size: 0.8rem;
+    color: #475569;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .place-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     white-space: nowrap;
     overflow: hidden;
-    animation: typing 10s steps(39) infinite, cursor 1s step-end infinite 4s;
-}
+    text-overflow: ellipsis;
+  }
 
- @keyframes typing {
-    from { width: 0%; }
-    to { width: 95%; }
-}
+  .place-card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
 
- @keyframes cursor {
-    0%, 100% { border-color: black; }
-    50% { border-color: transparent; }
-}
+  .btn-explore {
+    flex: 1;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    color: #1e293b;
+    text-decoration: none;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .btn-explore:hover {
+    background: #0284c7;
+    color: #ffffff;
+    border-color: #0284c7;
+  }
+
+  .btn-plan-ai {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+  }
+
+  .btn-plan-ai:hover {
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .empty-state {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    color: #64748b;
+  }
+
+  @media (max-width: 768px) {
+    .listings-header h1 { font-size: 1.8rem; }
+    .results-count-badge { width: 100%; margin-top: 8px; }
+  }
 </style>
 
-<% layout("layouts/boilerplate.ejs") %>
-<body>
-    <h3 class="lst">All Pilgrimage Places</h3>
+<div class="container listings-page-container">
 
-    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1">
-        <% for(let listing of allListings){ %>
-        <a href="/listings/<%= listing._id %>" class="listing-lk">
-           <div class="card col">
-                <img src="<%= listing.image %>" class="card-img-top" alt="listing_image" style="height: 12rem"><br>
-                <div class="card-img-overlay"></div>
-                <div class="card-body">
-                   <b><p class="card-text">
-                     <%= listing.title %> <br><br>
-                     <%= listing.description %>
-                   </p></b>
-                </div>
-            </div>
-        </a>    
-     <% } %>
+  <!-- Header -->
+  <div class="listings-header">
+    <h1><span style="font-size: 2.4rem;">🛕</span> Sacred Pilgrimage Places of India</h1>
+    <p>Discover revered temples, sacred rivers, gurdwaras, and spiritual sanctuaries across the holy land of Bharat.</p>
+  </div>
+
+  <!-- Search & Filter Toolbar -->
+  <div class="toolbar-card">
+    <div class="search-input-box">
+      <i class="bi bi-search search-icon-inside"></i>
+      <input
+        type="text"
+        id="liveSearchInput"
+        placeholder="Search any temple, city, deity, or region (e.g. Varanasi, Shiva, Tirupati, Ganga, Golden Temple)..."
+        autocomplete="off"
+      />
     </div>
-    
 
-    <footer>
-  <p>&copy; 2025 India Pilgrimage Guide</p>
-</footer>
-</body>
+    <div class="filter-chips-row">
+      <button class="filter-chip-btn active" onclick="filterByRegion('all', this)">All Places</button>
+      <button class="filter-chip-btn" onclick="filterByKeyword('North', this)">North India</button>
+      <button class="filter-chip-btn" onclick="filterByKeyword('South', this)">South India</button>
+      <button class="filter-chip-btn" onclick="filterByKeyword('East', this)">East India</button>
+      <button class="filter-chip-btn" onclick="filterByKeyword('West', this)">West India</button>
+      <button class="filter-chip-btn" onclick="filterByKeyword('Central', this)">Central India</button>
+      <button class="filter-chip-btn" onclick="filterByKeyword('Temple', this)">Temples</button>
+      <button class="filter-chip-btn" onclick="filterByKeyword('Dham', this)">Dhams</button>
+      
+      <span class="results-count-badge" id="resultsCount">
+        Showing <%= allListings.length %> destinations
+      </span>
+    </div>
+  </div>
+
+  <!-- Places Grid -->
+  <div class="places-grid" id="placesGrid">
+    <% for(let listing of allListings){ %>
+      <div
+        class="place-card-wrap"
+        data-title="<%= (listing.title || '').toLowerCase() %>"
+        data-desc="<%= (listing.description || '').toLowerCase() %>"
+        data-near="<%= (listing.nearbyAttractions || '').toLowerCase() %>"
+        data-station="<%= (listing.railwayStation || '').toLowerCase() %>"
+      >
+        <div class="place-thumb-box">
+          <img
+            src="<%= listing.image || 'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1000' %>"
+            alt="<%= listing.title %>"
+            class="place-thumb-img"
+            loading="lazy"
+            onerror="this.src='https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1000'"
+          />
+          <% if (listing.distance) { %>
+            <div class="place-distance-tag">
+              <i class="bi bi-geo-fill"></i> ~<%= listing.distance %> km
+            </div>
+          <% } %>
+        </div>
+
+        <div class="place-body">
+          <h3 class="place-title"><%= listing.title %></h3>
+          <p class="place-desc"><%= listing.description || 'Sacred pilgrimage sanctuary in India.' %></p>
+
+          <div class="place-meta">
+            <% if (listing.railwayStation) { %>
+              <div class="place-meta-item" title="<%= listing.railwayStation %>">
+                <i class="bi bi-train-front text-warning"></i> <%= listing.railwayStation %>
+              </div>
+            <% } %>
+            <% if (listing.visitingTime) { %>
+              <div class="place-meta-item" title="<%= listing.visitingTime %>">
+                <i class="bi bi-clock-history text-warning"></i> <%= listing.visitingTime %>
+              </div>
+            <% } %>
+          </div>
+
+          <div class="place-card-actions">
+            <a href="/listings/<%= listing._id %>" class="btn-explore">
+              <i class="bi bi-eye"></i> Details
+            </a>
+            <a href="/ai-guide?destination=<%= encodeURIComponent(listing.title) %>" class="btn-plan-ai" title="Plan Itinerary with AI">
+              <i class="bi bi-stars"></i> Plan AI
+            </a>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+
+  <!-- Empty Search State -->
+  <div id="emptySearchState" class="empty-state">
+    <span style="font-size: 3rem;">🔍</span>
+    <h4 style="margin-top: 15px; color: #475569;">No sacred places found matching your search.</h4>
+    <p>Try searching with another keyword or explore All Places.</p>
+    <button class="btn btn-warning" onclick="resetFilters()">View All Places</button>
+  </div>
+
+</div>
+
+<script>
+  const liveSearch = document.getElementById("liveSearchInput");
+  const placesGrid = document.getElementById("placesGrid");
+  const cards = Array.from(document.querySelectorAll(".place-card-wrap"));
+  const countBadge = document.getElementById("resultsCount");
+  const emptyState = document.getElementById("emptySearchState");
+
+  function filterCards() {
+    const q = liveSearch.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const title = card.getAttribute("data-title") || "";
+      const desc = card.getAttribute("data-desc") || "";
+      const near = card.getAttribute("data-near") || "";
+      const station = card.getAttribute("data-station") || "";
+
+      const match = !q || title.includes(q) || desc.includes(q) || near.includes(q) || station.includes(q);
+      if (match) {
+        card.style.display = "flex";
+        visibleCount++;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    countBadge.innerText = `Showing ${visibleCount} destinations`;
+    if (visibleCount === 0) {
+      emptyState.style.display = "block";
+    } else {
+      emptyState.style.display = "none";
+    }
+  }
+
+  liveSearch.addEventListener("input", filterCards);
+
+  function filterByRegion(region, btn) {
+    document.querySelectorAll(".filter-chip-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    liveSearch.value = "";
+    filterCards();
+  }
+
+  function filterByKeyword(keyword, btn) {
+    document.querySelectorAll(".filter-chip-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    liveSearch.value = keyword;
+    filterCards();
+  }
+
+  function resetFilters() {
+    liveSearch.value = "";
+    document.querySelectorAll(".filter-chip-btn").forEach(b => b.classList.remove("active"));
+    document.querySelector(".filter-chip-btn").classList.add("active");
+    filterCards();
+  }
+</script>
